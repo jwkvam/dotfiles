@@ -36,12 +36,6 @@ alias -g '......'='../../../../..'
 alias -g '.......'='../../../../../..'
 alias -g '........'='../../../../../../..'
 
-alias -g 'shome'='jacques@kvam.selfip.org'
-alias -g 'scs'='best-mumble.cs.wisc.edu'
-alias -g 'tux'='kvam@best-tux.cae.wisc.edu'
-alias -g 'sun'='kvam@sun-18.cae.wisc.edu'
-
-#eval $(dircolors -b ~/.dircolors)
 eval $(dircolors -b /etc/DIR_COLORS)
 
 ###
@@ -54,9 +48,6 @@ bindkey '^k' forward-word
 bindkey '^d' delete-word
 bindkey '^[[H' beginning-of-line
 bindkey '^[[F' end-of-line
-
-export PYTHONDOCS="/usr/share/doc/python-docs-2.6.5/html"
-export PYTHONPATH=/home/jacques/src/pybrain:$PYTHONPATH
 
 export HISTSIZE=1000
 export SAVEHIST=1000

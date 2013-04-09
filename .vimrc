@@ -47,16 +47,16 @@ iabbrev hoem home
 
 "convenient mappings
 map Q gq
-map ,n :cn <CR>
-map ,p :cp <CR>
+"map ,n :cn <CR>
+"map ,p :cp <CR>
 map ,e :e <C-R>=expand("%:p:h")."/"<CR>
 map ,v :vsp <C-R>=expand("%:p:h")."/"<CR>
 map ,s :split <C-R>=expand("%:p:h")."/"<CR>
-map ,t :tabedit <C-R>=expand("%:p:h")."/"<CR>
+"map ,t :tabedit <C-R>=expand("%:p:h")."/"<CR>
 map ,f :bn <CR>
 map ,b :bp <CR>
 map ,u :source ~/.vimrc<CR>
-map ,w :TlistToggle<CR>
+"map ,w :TlistToggle<CR>
 map <C-L> <C-W>l
 map <C-H> <C-W>h
 map <C-J> <C-W>j
@@ -86,15 +86,16 @@ autocmd BufRead,BufNewFile *.[ch]* if filereadable( fname ) |
 																			\ execute "so " . fname | endif
 "autocmd BufRead,BufNewFile *.[ch]* if filereadable( fname ) | echo "SUCCESS" | endif
 
+filetype plugin on
 syntax sync fromstart
 
 """"" Tagging functions
-autocmd BufEnter * doautocmd FileType
-
-au FileType cpp  map ,t :!ctags *.h *.cpp<CR>
-au FileType cpp  set cindent
-au FileType java map ,t :!ctags *.java<CR>
-au FileType c 	 map ,t :!ctags *.[ch]<CR>
-au FileType c 	 set cindent
-au FileType tex  set textwidth=80
-au FileType tex  iabbrev xx \cdot
+"autocmd BufEnter * doautocmd FileType
+"
+"au FileType cpp  map ,t :!ctags *.h *.cpp<CR>
+"au FileType cpp  set cindent
+"au FileType java map ,t :!ctags *.java<CR>
+"au FileType c 	 map ,t :!ctags *.[ch]<CR>
+"au FileType c 	 set cindent
+"au FileType tex  set textwidth=80
+"au FileType tex  iabbrev xx \cdot
