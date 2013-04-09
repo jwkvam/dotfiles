@@ -1,0 +1,22 @@
+[user]
+	name = Jacques Kvam
+	email = jwkvam@gmail.com
+[color]
+	ui = auto
+[alias]
+	br = branch
+	ci = commit
+	co = checkout
+	cp = cherry-pick
+	di = diff
+	dic = diff --cached
+	fp = format-patch
+	lg = log -p
+	lst = log --stat
+	st = status -sb
+[diff]
+  tool = vimdiff
+  algorith = patience
+
+[push]
+	default = simple
