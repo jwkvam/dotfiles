@@ -16,7 +16,6 @@
 	st = status -sb
 [diff]
   tool = vimdiff
-  algorith = patience
-
+  algorithm = patience
 [push]
-	default = simple
+  default = simple
