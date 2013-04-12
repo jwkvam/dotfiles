@@ -1,10 +1,12 @@
+
+# read by ipython notebook
+export BROWSER='/usr/bin/chromium'
+
 bindkey -e
 alias vn='ionice -c 3 nice -n 18'
 alias ls='ls -F --color=auto'
 alias ll='ls -l'
 alias la='ls -A'
-alias openup='okular'
-alias b='popd'
 alias tree='tree -C'
 #alias lst='ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/''
 #alias lst='ls -R | grep ":$" | sed -e ''s/:$//'' -e ''s/[^-][^\/]*\//--/g'' -e ''s/^/   /'' -e ''s/-/|/''
@@ -26,6 +28,7 @@ alias lsa='ls -ld .*'
 
 alias -s tex=vim
 alias -s m=vim
+alias -s py=vim
 alias -s cpp=vim
 alias -s c=vim
 
@@ -142,8 +145,6 @@ extract () {
 #### PHIL's ZSH Prompt
 
 function precmd {
-    autojump -a "$(pwd -P)" &>/dev/null
-
     local TERMWIDTH
     (( TERMWIDTH = ${COLUMNS} - 1 ))
 

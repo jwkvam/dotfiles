@@ -17,7 +17,6 @@ urxvt*secondaryScroll:    false
 urxvt*saveLines:         65535
 urxvt*cursorBlink:       false
 urxvt*cursorUnderline:   false
-urxvt*cursorUnderline:   false
 urxvt*urgentOnBell:       true
 urxvt*xftAutoHint:        true
 !urxvt*override-redirect:false
