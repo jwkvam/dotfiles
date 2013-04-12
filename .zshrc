@@ -28,7 +28,6 @@ alias lsa='ls -ld .*'
 
 alias -s tex=vim
 alias -s m=vim
-alias -s py=vim
 alias -s cpp=vim
 alias -s c=vim
 
