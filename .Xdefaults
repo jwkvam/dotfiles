@@ -19,6 +19,9 @@ urxvt*cursorBlink:       false
 urxvt*cursorUnderline:   false
 urxvt*urgentOnBell:       true
 urxvt*xftAutoHint:        true
+urxvt*scrollTtyOutput:   false
+urxvt*scrollWithBuffer:   true
+urxvt*scrollTtyKeypress:  true
 !urxvt*override-redirect:false
 !urxvt*borderLess:       false
 !urxvt*internalBorder:       0
