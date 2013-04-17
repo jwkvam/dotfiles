@@ -118,7 +118,7 @@ map <C-F> :set hls!<bar> set hls?<CR>
 
 "command Gtag !ctags.exe -f %:p:h\tags %:p:h\*
 
-set t_Co=255
+set t_Co=256
 "let g:zenburn_high_Contrast=1
 colorscheme zenburn
 hi search ctermbg=223 ctermfg=238
