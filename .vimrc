@@ -102,10 +102,14 @@ nnoremap <leader>f :bn <CR>
 nnoremap <leader>b :bp <CR>
 nnoremap <leader>uu :source ~/_vimrc<CR>
 
-nmap <C-L> <C-W>l
-nmap <C-H> <C-W>h
-"nmap <C-J> <C-W>j
-nmap <C-K> <C-W>w
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+set splitbelow
+set splitright
+
 noremap _ <C-W><
 noremap + <C-W>>
 
