@@ -22,6 +22,7 @@ urxvt*xftAutoHint:        true
 urxvt*scrollTtyOutput:   false
 urxvt*scrollWithBuffer:   true
 urxvt*scrollTtyKeypress:  true
+Urxvt.imLocale: en_US.UTF-8
 !urxvt*override-redirect:false
 !urxvt*borderLess:       false
 !urxvt*internalBorder:       0

@@ -68,7 +68,7 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
                          \ exe "normal g'\"" | endif
 
 
-set wildignore=*.o,*.out,*.bak,*.do,*.dep,*.ew*
+set wildignore=*.o,*.out,*.bak,*.do,*.dep,*.ew*,*.pkl,*.ipynb
 set wildignore+=*.pbi,*.r43,*.pbd,*.d43,*.pbi,*.dbgdt,*.map,*.cspy.bat,*.dni
 "abbreviations
 iabbrev teh the
