@@ -1,8 +1,6 @@
 autocmd!
 
-"let $VIM = 'C:\Users\jkvam\'
 let $VIM = $HOME
-
 set nocompatible
 
 "-------------------------------------------------------------------------------
@@ -11,6 +9,7 @@ set nocompatible
 filetype plugin on
 filetype indent on
 syntax enable
+syntax sync fromstart
 
 "set shell=zsh
 set background=dark
@@ -21,8 +20,8 @@ set smartcase
 set shortmess=atI
 set smarttab
 "set cindent
-set shiftwidth=2
-set tabstop=2
+set shiftwidth=4
+set tabstop=4
 set showmode
 set backspace=indent,eol,start
 set expandtab
@@ -59,48 +58,31 @@ set foldmethod=indent
 set foldlevel=20
 set foldnestmax=20
 set hidden
-"highlight Folded ctermbg=darkgreen ctermfg=black
-"highlight Search ctermbg=darkgreen ctermfg=black
-"syn sync fromstart
-"au BufReadPost * syn region javadoc start="/\*" end="\*/" transparent fold keepend
-"au BufReadPost * syn region braces start="{" end="}" transparent fold
+
+" recall cursor position for file
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
                          \ exe "normal g'\"" | endif
 
+execute pathogen#infect()
 
-set wildignore=*.o,*.out,*.bak,*.do,*.dep,*.ew*,*.pkl,*.ipynb
+set wildignore=*.o,*.out,*.bak,*.do,*.dep,*.ew*
+" python stuff
+set wildignore+=*.pkl,*.ipynb,*.npy,*.mat,*.pyc,*.pyd
 set wildignore+=*.pbi,*.r43,*.pbd,*.d43,*.pbi,*.dbgdt,*.map,*.cspy.bat,*.dni
-"abbreviations
-iabbrev teh the
-iabbrev hoem home
 
 let mapleader = ","
-"nnoremap <leader>tt :tabnew<cr>
-nnoremap <leader>d :tabclose<cr>
-"nnoremap <leader>tm :tabmove
-nnoremap <leader>n :tabnext<cr>
-nnoremap <leader>p :tabprevious<cr>
 
-"inoremap , ,<Space>
+" toggle paste
+nmap \p :set paste!<CR>
 
-"inoremap ( ()<Left>
-"inoremap [ []<Left>
-"inoremap { {}<Left>
-
-vnoremap ( s()<Esc>P<Right>%
-vnoremap [ s[]<Esc>P<Right>%
-vnoremap { s{}<Esc>P<Right>%
-
-"nnoremap <leader>n :cn <CR>
-"nnoremap <leader>p :cp <CR>
 nnoremap <leader>e :e <C-R>=expand("%:p:h")."/"<CR>
 nnoremap <leader>v :vsp <C-R>=expand("%:p:h")."/"<CR>
 nnoremap <leader>s :split <C-R>=expand("%:p:h")."/"<CR>
-"nnoremap <leader>t :tabnew <C-R>=expand("%:p:h")."/"<CR>
-nnoremap <leader>z :CommandT<CR>
+" nnoremap <leader>t :tabnew <C-R>=expand("%:p:h")."/"<CR>
+nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>f :bn <CR>
 nnoremap <leader>b :bp <CR>
-nnoremap <leader>uu :source ~/_vimrc<CR>
+nnoremap <leader>uu :source ~/.vimrc<CR>
 
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -115,20 +97,28 @@ noremap + <C-W>>
 
 map <C-F> :set hls!<bar> set hls?<CR>
 
-"let &t_ti.="\e[1 q"
-"let &t_SI.="\e[5 q"
-"let &t_EI.="\e[1 q"
-"let &t_te.="\e[0 q"
-
-"command Gtag !ctags.exe -f %:p:h\tags %:p:h\*
-
 set t_Co=256
 "let g:zenburn_high_Contrast=1
 colorscheme zenburn
 hi search ctermbg=223 ctermfg=238
 hi incsearch ctermbg=216 ctermfg=242
-"let g:solarized_termcolors=256
-"colorscheme solarized
 
-"set guifont=consolas:h11
-syntax sync fromstart
+"-------------------------------------------------------------------------------
+" PLUGINS
+"-------------------------------------------------------------------------------
+
+"-------------------------------------------------------------------------------
+" CtrlP
+"-------------------------------------------------------------------------------
+let g:ctrlp_map = '<c-p>'
+
+"-------------------------------------------------------------------------------
+" Fugitive
+"-------------------------------------------------------------------------------
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gb :Gblame<CR>
+
+"-------------------------------------------------------------------------------
+" TComment
+"-------------------------------------------------------------------------------
+noremap <leader>cc :TComment<CR>
