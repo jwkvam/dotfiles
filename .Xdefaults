@@ -2,8 +2,8 @@
 Xft.dpi:       96
 Xft.antialias: 1
 Xft.hinting:   0
-!Xft.hintstyle: hintfull
-!Xft.hintstyle: slight
+! Xft.hintstyle: hintfull
+! Xft.hintstyle: slight
 Xft.rgba:      rgb
 !}}}
 
@@ -37,8 +37,8 @@ urxvt*matcher.button:  1
 urxvt*cutchars:        '"'()*<>[]{|}
 !
 ! Appearance
-urxvt*font:     xft:Consolas:size=10.5
-urxvt*boldFont: xft:Consolas:bold:size=10.5
+urxvt*font:     xft:Consolas:size=9
+urxvt*boldFont: xft:Consolas:bold:size=9
 !
 ! Cursor
 urxvt*cursorColor: #DCDCCC
