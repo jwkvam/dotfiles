@@ -335,12 +335,12 @@ let g:rainbow_active = 1
 " }}}
 " Oblique {{{
 function! s:flash()
-	for _ in range(1, 3)
-		set cursorline!
-		redraw
-		sleep 20m
-	endfor
-	set cursorline!
+  for _ in range(1, 3)
+    set cursorline!
+    redraw
+    sleep 20m
+  endfor
+  set cursorline!
 endfunction
 let g:oblique#incsearch_highlight_all = 1
 " let g:oblique#clear_highlight = 0
@@ -356,18 +356,18 @@ let g:airline_right_sep = ''
 let g:airline#extensions#tabline#fnamemod = ':~'
 let g:airline#extensions#tabline#fnamecollapse = 1
 let g:airline_mode_map = {
-		\ '__' : '-',
-		\ 'n'  : 'N',
-		\ 'i'  : 'I',
-		\ 'R'  : 'R',
-		\ 'c'  : 'C',
-		\ 'v'  : 'V',
-		\ 'V'  : 'V',
-		\ '' : 'V',
-		\ 's'  : 'S',
-		\ 'S'  : 'S',
-		\ '' : 'S',
-		\ }
+      \ '__' : '-',
+      \ 'n'  : 'N',
+      \ 'i'  : 'I',
+      \ 'R'  : 'R',
+      \ 'c'  : 'C',
+      \ 'v'  : 'V',
+      \ 'V'  : 'V',
+      \ '' : 'V',
+      \ 's'  : 'S',
+      \ 'S'  : 'S',
+      \ '' : 'S',
+      \ }
 " }}}
 " DBext {{{
 let g:dbext_default_profile_PG = 'type=PGSQL:user=jacques:passwd=:dbname=energyai_development'
@@ -473,6 +473,16 @@ nnoremap  <Space><Space>hs     <Plug>GitGutterStageHunk
 " vim-after-object {{{
 autocmd VimEnter * call after_object#enable('=', '#')
 " }}}
+" vim-operator-surround {{{
+
+" operator mappings
+map <silent>sa <Plug>(operator-surround-append)
+map <silent>sd <Plug>(operator-surround-delete)
+map <silent>sr <Plug>(operator-surround-replace)
+
+nmap <silent>sdd <Plug>(operator-surround-delete)<Plug>(textobj-anyblock-a)
+nmap <silent>srr <Plug>(operator-surround-replace)<Plug>(textobj-anyblock-a)
+" }}}
 " Digraphs {{{
 " ±
 :dig pm 177
@@ -542,7 +552,8 @@ nmap <leader>f <Plug>(quick-replace)
 xmap <leader>f <Plug>(quick-replace)
 " }}}
 
-nnoremap <Leader>q :ccl<CR>
 nnoremap <Leader>e :ll!<CR>
+let g:lt_location_list_toggle_map = '<leader>o'
+let g:lt_quickfix_list_toggle_map = '<leader>q'
 
 " vim: fdm=marker
