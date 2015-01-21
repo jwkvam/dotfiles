@@ -26,10 +26,10 @@ set ignorecase
 set smartcase
 set shortmess=atI
 set smarttab
-set shiftwidth=2
-set tabstop=2
+set shiftwidth=4
+set tabstop=4
 set expandtab
-set softtabstop=2
+set softtabstop=4
 set showmode
 set backspace=indent,eol,start
 set listchars=tab:▸\ ,extends:❯,precedes:❮
@@ -51,30 +51,13 @@ hi search ctermbg=223 ctermfg=238
 hi incsearch ctermbg=216 ctermfg=242
 " }}}
 
-" {{{ Iterm2 Keymaps
-" http://superuser.com/questions/705147/is-it-safe-to-map-a-key-to-a-custom-escape-sequence-in-iterm
-map <S-F1> <S-BS>
-map! <S-F1> <S-BS>
-
-map <S-F2> <C-BS>
-map! <S-F2> <C-BS>
-
-map <S-F3> <S-CR>
-map! <S-F3> <S-CR>
-
-map <S-F4> <C-CR>
-map! <S-F4> <C-CR>
-" }}}
-
-
+" swap i_CTRL-C and i_CTRL-[
+inoremap <C-[> <C-c>
+inoremap <C-c> <Esc>
 inoremap jk <Esc>
 
 filetype plugin on
 filetype indent on
-
-if has('nvim')
-  runtime! python_setup.vim
-endif
 
 " autocmd FileType startify setlocal fdm=manual
 
@@ -132,7 +115,7 @@ set laststatus=2
 set title
 set viminfo='100,f0
 set foldmethod=indent
-" set foldlevel=20
+set foldlevelstart=1
 set foldnestmax=20
 set hidden
 
@@ -146,14 +129,16 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
                          \ exe "normal g'\"" | endif
 " }}}
 
-" Files to ignore {{{ 
+" Files to ignore {{{
 set wildignore=*.o,*.out,*.bak,*.log
-" python stuff
+" python
 set wildignore+=*.pkl,*.ipynb,*.npy,*.mat,*.pyc,*.pyd,*.npz,*.jbl
-" vim tmp files
+" vim tmp
 set wildignore+=*.swp
-" git files
+" git
 set wildignore+=.git
+" latex
+set wildignore+=*.aux,*.fls,*.out,*.pdf,*.fdb_latexmk
 " }}}
 
 let mapleader = "\<space>"
@@ -185,12 +170,12 @@ set splitright
 noremap _ <C-W><
 noremap + <C-W>>
 
-" Highlight Margin {{{ 
+" Highlight Margin {{{
 hi ColorColumn ctermbg=magenta
 
 function! MarkMargin (on)
     if exists('b:MarkMargin')
-        try 
+        try
             call matchdelete(b:MarkMargin)
         catch /./
         endtry
@@ -246,7 +231,8 @@ let g:syntastic_mode_map = { "mode": "active",
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_python_checkers=['python', 'pylint']
-" let g:syntastic_python_pylint_args = '-E'
+let g:syntastic_python_pylint_args = '--load-plugins pylint_django'
+" let g:syntastic_python_pylint_args = '--load-plugins pylint_django -E'
 
 " let g:syntastic_python_checkers=['python', 'flake8']
 " let g:syntastic_python_flake8_args = '--ignore=E501'
@@ -387,22 +373,33 @@ let g:undotree_SetFocusWhenToggle=1
 let g:undotree_WindowLayout=2
 " }}}
 " DelimitMate {{{
+" in iTerm2 I have {S},{C}-{BS,CR} mapped to ™¡£¢
 " inoremap <C-Tab> <C-R>=delimitMate#JumpAny()<CR>
 " inoremap <C-Tab> <Plug>delimitMateJumpMany
 " inoremap <C-\> @<Plug>delimitMateJumpMany
 " imap <silent> <buffer> <C-\> <Plug>delimitMateJumpMany
-" imap <silent> <buffer> <S-BS> <Plug>delimitMateS-BS
-imap <C-\> <S-BS>
-" imap <silent> <buffer> <C-CR> <Plug>delimitMateJumpMany
-" imap <C-CR> <Plug>delimitMateJumpMany
-imap <S-CR> <Plug>delimitMateJumpMany
+imap <silent> <buffer> ¡ <Plug>delimitMateS-BS
+" imap <C-\> <S-BS>
+imap <silent> <buffer> £ <Plug>delimitMateJumpMany
+imap <silent> <buffer> ¢ <Plug>delimitMateJumpMany
+" imap <silent> <buffer> <S-F2> <Plug>delimitMateS-BS
+" imap <silent> <buffer> <S-F1> <Plug>delimitMateS-BS
+" imap <silent> <buffer> <C-\>  <Plug>delimitMateS-BS
+
+"
+" inoremap <S-F4> <Plug>delimitMateJumpMany
+" inoremap <S-F3> <Plug>delimitMateJumpMany
+
+" imap <expr> <CR> pumvisible() ? "\<C-Y>" : "<Plug>delimitMateCR"
+" imap <expr> <C-CR> pumvisible() ? "\<C-Y>" : "<Plug>delimitMateJumpMany"
+" imap <expr> <S-CR> pumvisible() ? "\<C-Y>" : "<Plug>delimitMateJumpMany"
+
+" hell({})
 " <C-R>=delimitMat#JumpAny()<BS>
-" }}}
-" vimwiki {{{
-nmap <leader>y <Plug>VimwikiIndex
 " }}}
 " youcompleteme {{{
 let g:ycm_path_to_python_interpreter='/usr/bin/python'
+" let g:ycm_path_to_python_interpreter='/Users/jacques/anaconda/bin/python'
 let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -420,8 +417,9 @@ let g:ycm_filetype_blacklist = {
 " }}}
 " ultisnips {{{
 let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger=""                                           
-let g:UltiSnipsJumpBackwardTrigger=""
+" let g:UltiSnipsExpandTrigger="<Tab>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 
 " https://github.com/Valloric/YouCompleteMe/issues/36
 " Enable tabbing through list of results
@@ -528,7 +526,7 @@ nmap <silent>srr <Plug>(operator-surround-replace)<Plug>(textobj-anyblock-a)
 function! s:gn_next()
   augroup gn_next_repeat
     autocmd!
-    autocmd CursorMoved <buffer> 
+    autocmd CursorMoved <buffer>
           \ execute "autocmd! gn_next_repeat" |
           \ silent! call repeat#set(v:operator . "\<Plug>(gn-next)" . (v:operator == 'c' ? "\<c-a>\<esc>" : '')) |
           \ normal! n
