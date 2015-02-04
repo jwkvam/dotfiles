@@ -1,11 +1,76 @@
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-
 let $VIM = $HOME
 set nocompatible
 
+runtime plugged/vim-plug/plug.vim
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/vim-plug'
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-after-object'
+Plug 'junegunn/vim-oblique'
+Plug 'junegunn/vim-pseudocl'
+
+Plug 'jnurmine/Zenburn'
+
+Plug 'Valloric/ListToggle'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
+
+Plug 'SirVer/ultisnips'
+
+Plug 'boucherm/ShowMotion'
+Plug 'tmhedberg/SimpylFold'
+Plug 'rking/ag.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'vim-scripts/dbext.vim'
+Plug 'Raimondi/delimitMate'
+
+Plug 'benekastah/neomake'
+Plug 'luochen1990/rainbow'
+Plug 'scrooloose/syntastic'
+Plug 'wellle/targets.vim'
+
+Plug 'tomtom/tcomment_vim'
+Plug 'tomtom/tlib_vim'
+
+Plug 'mbbill/undotree'
+
+Plug 'MarcWeber/vim-addon-local-vimrc'
+Plug 'MarcWeber/vim-addon-mw-utils'
+
+Plug 'bling/vim-airline'
+Plug 'craigemery/vim-autotag'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'airblade/vim-gitgutter'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'kristijanhusak/vim-multiple-cursors'
+Plug 'rhysd/vim-operator-surround'
+Plug 'rhysd/vim-textobj-anyblock'
+
+Plug 'osyo-manga/vim-over'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'hynek/vim-python-pep8-indent'
+Plug 'honza/vim-snippets'
+
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-rsi'
+
+Plug 'dhruvasagar/vim-prosession'
+
+Plug 'kana/vim-operator-user'
+Plug 'kana/vim-textobj-user'
+
+" Plug '~/vim/custom/
+
+call plug#end()
+
 " Pathogen {{{
-execute pathogen#infect()
-execute pathogen#helptags()
+" execute pathogen#infect()
+" execute pathogen#helptags()
 " }}}
 
 " Basic options {{{
@@ -60,6 +125,8 @@ filetype plugin on
 filetype indent on
 
 " autocmd FileType startify setlocal fdm=manual
+
+autocmd BufRead,BufNewFile *.md setlocal spell
 
 " Window dimensions {{{
 set winheight=30
@@ -204,11 +271,12 @@ nnoremap <Leader>a :Ag!<space>
 
 " nmap s <Plug>(easymotion-s2)
 " nmap t <Plug>(easymotion-t2)
-map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>l <Plug>(easymotion-lineanywhere)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
-map <Leader>h <Plug>(easymotion-linebackward)
-map <Leader>w <Plug>(easymotion-w)
+map <Leader>h <Plug>(easymotion-lineanywhere)
+map <Leader>w <Plug>(easymotion-bd-w)
+map <Leader>e <Plug>(easymotion-bd-e)
 map <Leader>b <Plug>(easymotion-b)
 " map <Leader>r <Plug>(easymotion-jumptoanywhere)
 nmap t <Plug>(easymotion-t2)
@@ -222,8 +290,28 @@ let g:EasyMotion_smartcase = 1
 vmap <Enter> <Plug>(EasyAlign)
 " nmap <Leader>a <Plug>(EasyAlign)
 " }}}
+" Neomake {{{
+autocmd! BufWritePost *.py Neomake
+autocmd! BufWritePost *.md Neomake!
+let g:neomake_python_pylint_maker = {
+            \ 'args': [
+            \ '-f', 'text',
+            \ '--msg-template="{path}:{line}:{column}:{C}: [{symbol}] {msg}"',
+            \ '-r', 'n',
+            \ '--load-plugins', 'pylint_django'
+        \ ],
+        \ 'errorformat':
+            \ '%A%f:%l:%c:%t: %m,' .
+            \ '%A%f:%l: %m,' .
+            \ '%A%f:(%l): %m,' .
+            \ '%-Z%p^%.%#,' .
+            \ '%-G%.%#',
+        \ }
+let g:neomake_python_enabled_makers = ['pylint']
+let g:neomake_markdown_enabled_makers = ['make']
+" }}}
 " Syntastic {{{
-nnoremap <Leader><Leader>s :SyntasticCheck<CR>
+nnoremap <Leader><Leader>d :SyntasticCheck<CR>
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { "mode": "active",
       \ "active_filetypes": ["ruby", "php"],
@@ -398,8 +486,10 @@ imap <silent> <buffer> ¢ <Plug>delimitMateJumpMany
 " <C-R>=delimitMat#JumpAny()<BS>
 " }}}
 " youcompleteme {{{
+let g:python_host_prog='/usr/bin/python2.7'
 let g:ycm_path_to_python_interpreter='/usr/bin/python'
 " let g:ycm_path_to_python_interpreter='/Users/jacques/anaconda/bin/python'
+
 let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -407,9 +497,7 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_filetype_blacklist = {
         \ 'tagbar' : 1,
         \ 'qf' : 1,
-        \ 'notes' : 1,
         \ 'unite' : 1,
-        \ 'text' : 1,
         \ 'vimwiki' : 1,
         \ 'infolog' : 1,
         \ 'mail' : 1
@@ -550,7 +638,7 @@ nmap <leader>f <Plug>(quick-replace)
 xmap <leader>f <Plug>(quick-replace)
 " }}}
 
-nnoremap <Leader>e :ll!<CR>
+nnoremap <Leader>d :ll!<CR>
 let g:lt_location_list_toggle_map = '<leader>o'
 let g:lt_quickfix_list_toggle_map = '<leader>q'
 
