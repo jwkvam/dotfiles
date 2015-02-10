@@ -10,13 +10,18 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-after-object'
 Plug 'junegunn/vim-oblique'
 Plug 'junegunn/vim-pseudocl'
+Plug 'junegunn/vim-peekaboo'
 
+Plug 'kshenoy/vim-signature'
+
+Plug 'vim-scripts/diffchar.vim'
 Plug 'jnurmine/Zenburn'
 
 Plug 'Valloric/ListToggle'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
 
 Plug 'SirVer/ultisnips'
+
 
 Plug 'boucherm/ShowMotion'
 Plug 'tmhedberg/SimpylFold'
@@ -568,6 +573,9 @@ map <silent>sr <Plug>(operator-surround-replace)
 
 nmap <silent>sdd <Plug>(operator-surround-delete)<Plug>(textobj-anyblock-a)
 nmap <silent>srr <Plug>(operator-surround-replace)<Plug>(textobj-anyblock-a)
+" }}}
+" {{{ diffchar
+let g:DiffUpdate=1
 " }}}
 " Digraphs {{{
 " ±
