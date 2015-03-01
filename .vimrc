@@ -1,5 +1,4 @@
 let $VIM = $HOME
-set nocompatible
 
 runtime plugged/vim-plug/plug.vim
 
@@ -492,7 +491,7 @@ imap <silent> <buffer> ¢ <Plug>delimitMateJumpMany
 " }}}
 " youcompleteme {{{
 let g:python_host_prog='/usr/bin/python2.7'
-let g:ycm_path_to_python_interpreter='/usr/bin/python'
+let g:ycm_path_to_python_interpreter='/usr/bin/python2.7'
 " let g:ycm_path_to_python_interpreter='/Users/jacques/anaconda/bin/python'
 
 let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
