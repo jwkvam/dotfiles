@@ -1,5 +1,4 @@
 let $VIM = $HOME
-set nocompatible
 
 call plug#begin('~/.vim/plugged')
 
@@ -545,8 +544,8 @@ imap <silent> <buffer> ¢ <Plug>delimitMateJumpMany
 " <C-R>=delimitMat#JumpAny()<BS>
 " }}}
 " youcompleteme {{{
-let g:python_host_prog='/usr/bin/python'
-let g:ycm_path_to_python_interpreter='/usr/bin/python'
+let g:python_host_prog='/usr/bin/python2.7'
+let g:ycm_path_to_python_interpreter='/usr/bin/python2.7'
 " let g:ycm_path_to_python_interpreter='/Users/jacques/anaconda/bin/python'
 "
 
