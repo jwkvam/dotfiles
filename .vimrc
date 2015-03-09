@@ -1,11 +1,8 @@
 let $VIM = $HOME
 set nocompatible
 
-runtime plugged/vim-plug/plug.vim
-
 call plug#begin('~/.vim/plugged')
 
-Plug 'junegunn/vim-plug'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-after-object'
 Plug 'junegunn/vim-oblique'
@@ -73,6 +70,52 @@ Plug 'kana/vim-textobj-user'
 
 call plug#end()
 
+if has('nvim') && exists(':tnoremap')
+    nnoremap <silent> <f4> :REPLSendLine<cr>
+    vnoremap <silent> <f4> :REPLSendSelection<cr>
+
+    command! -range=% REPLSendSelection call REPLSend(s:GetVisual())
+    command! REPLSendLine call REPLSend([getline('.')])
+
+    function! REPLSend(lines)
+        call jobsend(g:last_term_job_id, add(a:lines, ''))
+    endfunction
+
+    " x = 3
+    " print(x)
+    " import numpy as np
+    " np.__version__
+    " x**2
+
+    function! s:GetVisual()
+        let [lnum1, col1] = getpos("'<")[1:2]
+        let [lnum2, col2] = getpos("'>")[1:2]
+        let lines = getline(lnum1, lnum2)
+        let lines[-1] = lines[-1][:col2 - 2]
+        let lines[0] = lines[0][col1 - 1:]
+        return lines
+    endfunction
+
+    au TermCreate * let g:last_term_job_id = b:term_job_id
+
+    tnoremap ˙ <c-\><c-n><c-w>h
+    tnoremap ∆ <c-\><c-n><c-w>j
+    tnoremap ˚ <c-\><c-n><c-w>k
+    tnoremap ¬ <c-\><c-n><c-w>l
+
+    tnoremap œ <c-\><c-n>ZQ
+
+    nnoremap ˙ <c-w>h
+    nnoremap ∆ <c-w>j
+    nnoremap ˚ <c-w>k
+    nnoremap ¬ <c-w>l
+    " tnoremap <silent> <c-w>z <c-\><c-n>:ZoomWinTabToggle<cr>
+    au WinEnter term://* startinsert
+
+    nnoremap Ò <c-w>v :term fish<CR>
+    nnoremap Ô <c-w>s :term fish<CR>
+endif
+
 " Pathogen {{{
 " execute pathogen#infect()
 " execute pathogen#helptags()
@@ -114,7 +157,7 @@ set formatoptions=cqrt
 set ssop=blank,buffers,curdir,folds,help,options,tabpages,winsize
 
 " Colorscheme {{{
-set t_Co=256
+" set t_Co=256
 " let g:zenburn_high_Contrast=1
 colorscheme zenburn
 hi search ctermbg=223 ctermfg=238
@@ -135,11 +178,11 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 
 " Window dimensions {{{
 set winheight=30
-set winminheight=1
+" set winminheight=1
 set winwidth=80
-set winminwidth=1
+" set winminwidth=1
 " Resize splits when the window is resized
-au VimResized * :wincmd =
+" au VimResized * :wincmd =
 " }}}
 " Backups {{{
 " from steve losh's vimrc
@@ -172,7 +215,7 @@ set matchtime=1
 set equalalways
 let loaded_matchparen=1
 
-set lazyredraw
+" set lazyredraw
 
 " {{{ Searching
 " nnoremap <silent> * :let stay_star_view = winsaveview()<cr>*:call winrestview(stay_star_view)<cr>:set hlsearch<cr>
@@ -232,7 +275,9 @@ vnoremap <leader><C-r> "vy:%s/<C-r>v//g<Left><Left>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" nnoremap <C-H> <C-W><C-H>
+" this is really <c-h> but mapped to some weird unicode
+nnoremap � <C-W><C-H>
 
 nnoremap <silent> <Tab> @=(foldlevel('.')?'za':"\<Space>")<CR>
 
@@ -298,6 +343,15 @@ vmap <Enter> <Plug>(EasyAlign)
 " Neomake {{{
 autocmd! BufWritePost *.py Neomake
 autocmd! BufWritePost *.md Neomake!
+let g:neomake_error_sign = {
+    \ 'text': '✗',
+    \ 'texthl': 'ErrorMsg'
+    \ }
+let g:neomake_warning_sign = {
+    \ 'text': '⚠',
+    \ 'texthl': 'WarningMsg'
+    \ }
+
 let g:neomake_python_pylint_maker = {
             \ 'args': [
             \ '-f', 'text',
@@ -361,7 +415,7 @@ nnoremap <Leader>gb :Gblame<CR>
 " Jedi-vim {{{
 " let g:jedi#use_splits_not_buffers = "left"
 " let g:jedi#popup_on_dot = 0
-" let g:jedi#show_call_signatures = 1
+let g:jedi#show_call_signatures = 1
 " }}}
 " supertab {{{
 " let g:SuperTabDefaultCompletionType = "context"
@@ -385,8 +439,8 @@ vmap <C-v> <Plug>(expand_region_shrink)
 nnoremap <silent> <leader>s :set opfunc=<SID>AgMotion<CR>g@
 xnoremap <silent> <leader>s :<C-U>call <SID>AgMotion(visualmode())<CR>
 
-nnoremap <bs> :Ag! '\b<c-r><c-w>\b'<cr>
-xnoremap <silent> <bs> :<C-U>call <SID>AgMotion(visualmode())<CR>
+" nnoremap <bs> :Ag! '\b<c-r><c-w>\b'<cr>
+" xnoremap <silent> <bs> :<C-U>call <SID>AgMotion(visualmode())<CR>
 
 function! s:CopyMotionForType(type)
     if a:type ==# 'v'
@@ -491,13 +545,22 @@ imap <silent> <buffer> ¢ <Plug>delimitMateJumpMany
 " <C-R>=delimitMat#JumpAny()<BS>
 " }}}
 " youcompleteme {{{
-let g:python_host_prog='/usr/bin/python2.7'
+let g:python_host_prog='/usr/bin/python'
 let g:ycm_path_to_python_interpreter='/usr/bin/python'
 " let g:ycm_path_to_python_interpreter='/Users/jacques/anaconda/bin/python'
+"
 
 let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
 let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_complete_in_comments = 1
+
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+
 
 let g:ycm_filetype_blacklist = {
         \ 'tagbar' : 1,
@@ -553,6 +616,7 @@ nnoremap <Leader>c :Pandoc --webtex html<CR>
 " }}}
 " gitgutter {{{
 " nnoremap <Leader>hp <NOP>
+let g:gitgutter_signs = 0
 nnoremap  <Space><Space>hp     <Plug>GitGutterPreviewHunk
 nnoremap  <Space><Space>hr     <Plug>GitGutterRevertHunk
 nnoremap  <Space><Space>hs     <Plug>GitGutterStageHunk
@@ -576,6 +640,36 @@ nmap <silent>srr <Plug>(operator-surround-replace)<Plug>(textobj-anyblock-a)
 " }}}
 " {{{ diffchar
 let g:DiffUpdate=1
+" }}}
+" {{{ vim-signature
+
+" This function returns the highlight group used by git-gutter depending on how the line was edited (added/modified/deleted)
+" It must be placed in the vimrc (or in any file that is sourced by vim)
+let g:SignatureDeferPlacement=0
+" function! SignatureGitGutter(lnum)
+"     let l:lnum = a:lnum
+"     let gg_line_state = filter(copy(gitgutter#diff#process_hunks(gitgutter#hunk#hunks())), 'v:val[0] == l:lnum')
+"     "echo gg_line_state
+"
+"     if len(gg_line_state) == 0
+"         return 'Exception'
+"     endif
+"
+"     if gg_line_state[0][1] =~ 'added'
+"         return 'GitGutterAdd'
+"     elseif gg_line_state[0][1] =~ 'modified'
+"         return 'GitGutterChange'
+"     elseif gg_line_state[0][1] =~ 'removed'
+"         return 'GitGutterDelete'
+"     endif
+" endfunction
+"  
+" " Next, assign it to g:SignatureMarkTextHL
+" let g:SignatureMarkTextHL = 'SignatureGitGutter(a:lnum)'
+ 
+" Now everytime Signature wants to place a sign, it calls this function and thus, we can dynamically assign a Highlight group g:SignatureMarkTextHL
+" The advantage of doing it this way is that this decouples Signature from git-gutter. Both can remain unaware of the other.
+
 " }}}
 " Digraphs {{{
 " ±
