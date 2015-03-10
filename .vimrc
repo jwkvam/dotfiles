@@ -111,8 +111,8 @@ if has('nvim') && exists(':tnoremap')
     " tnoremap <silent> <c-w>z <c-\><c-n>:ZoomWinTabToggle<cr>
     au WinEnter term://* startinsert
 
-    nnoremap Ò <c-w>v :term fish<CR>
-    nnoremap Ô <c-w>s :term fish<CR>
+    nnoremap Ò <c-w>v \| :term fish<CR>
+    nnoremap Ô <c-w>s \| :term fish<CR>
 endif
 
 " Pathogen {{{
@@ -274,9 +274,9 @@ vnoremap <leader><C-r> "vy:%s/<C-r>v//g<Left><Left>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
-" nnoremap <C-H> <C-W><C-H>
+nnoremap <C-H> <C-W><C-H>
 " this is really <c-h> but mapped to some weird unicode
-nnoremap � <C-W><C-H>
+" nnoremap � <C-W><C-H>
 
 nnoremap <silent> <Tab> @=(foldlevel('.')?'za':"\<Space>")<CR>
 
