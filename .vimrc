@@ -113,6 +113,8 @@ if has('nvim') && exists(':tnoremap')
 
     nnoremap Ò <c-w>v \| :term fish<CR>
     nnoremap Ô <c-w>s \| :term fish<CR>
+    nnoremap  :set nosplitbelow<CR> \| <c-w>s \| :set splitbelow<CR> \| :term fish<CR>
+    nnoremap Ó :set nosplitright<CR> \| <c-w>v \| :set splitright<CR> \| :term fish<CR>
 endif
 
 " Pathogen {{{
