@@ -40,7 +40,8 @@ Plug 'MarcWeber/vim-addon-local-vimrc'
 Plug 'MarcWeber/vim-addon-mw-utils'
 
 Plug 'bling/vim-airline'
-Plug 'craigemery/vim-autotag'
+" Plug 'craigemery/vim-autotag'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -65,7 +66,11 @@ Plug 'dhruvasagar/vim-prosession'
 Plug 'kana/vim-operator-user'
 Plug 'kana/vim-textobj-user'
 
-" Plug '~/vim/custom/
+Plug 'blueyed/vim-diminactive'
+
+" Plug 'bfredl/nvim-ipy'
+
+" Plug '~/.vim/custom/dim_inactive'
 
 call plug#end()
 
@@ -80,12 +85,6 @@ if has('nvim') && exists(':tnoremap')
         call jobsend(g:last_term_job_id, add(a:lines, ''))
     endfunction
 
-    " x = 3
-    " print(x)
-    " import numpy as np
-    " np.__version__
-    " x**2
-
     function! s:GetVisual()
         let [lnum1, col1] = getpos("'<")[1:2]
         let [lnum2, col2] = getpos("'>")[1:2]
@@ -96,6 +95,7 @@ if has('nvim') && exists(':tnoremap')
     endfunction
 
     au TermCreate * let g:last_term_job_id = b:term_job_id
+    au WinEnter term://* let g:last_term_job_id = b:term_job_id
 
     tnoremap ˙ <c-\><c-n><c-w>h
     tnoremap ∆ <c-\><c-n><c-w>j
@@ -133,6 +133,7 @@ vnoremap v <C-V>
 vnoremap <C-V> v
 
 set shell=/bin/bash
+set scrolloff=1
 set background=dark
 set history=1000
 set ruler
@@ -288,8 +289,9 @@ set splitright
 noremap _ <C-W><
 noremap + <C-W>>
 
+
 " Highlight Margin {{{
-hi ColorColumn ctermbg=magenta
+hi ColorMargin ctermbg=magenta
 
 function! MarkMargin (on)
     if exists('b:MarkMargin')
@@ -300,7 +302,7 @@ function! MarkMargin (on)
         unlet b:MarkMargin
     endif
     if a:on
-        let b:MarkMargin = matchadd('ColorColumn', '\%81v', 100)
+        let b:MarkMargin = matchadd('ColorMargin', '\%81v', 100)
     endif
 endfunction
 
@@ -643,7 +645,6 @@ nmap <silent>srr <Plug>(operator-surround-replace)<Plug>(textobj-anyblock-a)
 let g:DiffUpdate=1
 " }}}
 " {{{ vim-signature
-
 " This function returns the highlight group used by git-gutter depending on how the line was edited (added/modified/deleted)
 " It must be placed in the vimrc (or in any file that is sourced by vim)
 let g:SignatureDeferPlacement=0
@@ -671,6 +672,9 @@ let g:SignatureDeferPlacement=0
 " Now everytime Signature wants to place a sign, it calls this function and thus, we can dynamically assign a Highlight group g:SignatureMarkTextHL
 " The advantage of doing it this way is that this decouples Signature from git-gutter. Both can remain unaware of the other.
 
+" }}}
+" {{{ diminactive
+highlight ColorColumn ctermbg=236 guibg=#334444
 " }}}
 " Digraphs {{{
 " ±
