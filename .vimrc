@@ -2,6 +2,9 @@ let $VIM = $HOME
 
 call plug#begin('~/.vim/plugged')
 
+" Plug 'dyng/ctrlsf.vim'
+" Plug 'jwkvam/ctrlsf.vim'
+Plug '~/dev/ctrlsf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-after-object'
 Plug 'junegunn/vim-oblique'
@@ -21,9 +24,8 @@ Plug 'SirVer/ultisnips'
 
 Plug 'boucherm/ShowMotion'
 Plug 'tmhedberg/SimpylFold'
-Plug 'rking/ag.vim'
+" Plug 'rking/ag.vim'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'vim-scripts/dbext.vim'
 Plug 'Raimondi/delimitMate'
 
 Plug 'benekastah/neomake'
@@ -317,7 +319,7 @@ set tags=tags;
 " Ag.vim {{{
 "
 let g:agprg = 'ag --smart-case --nogroup --nocolor --column'
-nnoremap <Leader>a :Ag!<space>
+" nnoremap <Leader>a :Ag!<space>
 
 " }}}
 " easy motion {{{
@@ -428,6 +430,13 @@ let g:jedi#show_call_signatures = 1
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 " }}}
+" {{{ ctrlsf
+" nnoremap <Leader>s :CtrlSFOpen<CR>
+nmap <Leader>s <Plug>CtrlSFCwordExec
+vmap <Leader>s <Plug>CtrlSFVwordExec
+" nnoremap <C-F>n <Plug>(CtrlSFPrompt)
+" xnoremap <C-F>f <Plug>(CtrlSFVwordExec)
+" }}} 
 " Ag motions {{{
 
 " Motions to Ag for things.  Works with pretty much everything, including:
@@ -438,27 +447,27 @@ vmap <C-v> <Plug>(expand_region_shrink)
 "
 " Note: If the text covered by a motion contains a newline it won't work.  Ag
 " searches line-by-line.
-
-nnoremap <silent> <leader>s :set opfunc=<SID>AgMotion<CR>g@
-xnoremap <silent> <leader>s :<C-U>call <SID>AgMotion(visualmode())<CR>
-
-" nnoremap <bs> :Ag! '\b<c-r><c-w>\b'<cr>
-" xnoremap <silent> <bs> :<C-U>call <SID>AgMotion(visualmode())<CR>
-
-function! s:CopyMotionForType(type)
-    if a:type ==# 'v'
-        silent execute "normal! `<" . a:type . "`>y"
-    elseif a:type ==# 'char'
-        silent execute "normal! `[v`]y"
-    endif
-endfunction
-
-function! s:AgMotion(type) abort
-    let reg_save = @@
-    call s:CopyMotionForType(a:type)
-    execute "normal! :Ag! --literal " . shellescape(@@) . "\<cr>"
-    let @@ = reg_save
-endfunction
+"
+" nnoremap <silent> <leader>s :set opfunc=<SID>AgMotion<CR>g@
+" xnoremap <silent> <leader>s :<C-U>call <SID>AgMotion(visualmode())<CR>
+"
+" nnoremap <leader>a :Ag! '\b<c-r><c-w>\b'<cr>
+" xnoremap <silent> <leader>a :<C-U>call <SID>AgMotion(visualmode())<CR>
+"
+" function! s:CopyMotionForType(type)
+"     if a:type ==# 'v'
+"         silent execute "normal! `<" . a:type . "`>y"
+"     elseif a:type ==# 'char'
+"         silent execute "normal! `[v`]y"
+"     endif
+" endfunction
+"
+" function! s:AgMotion(type) abort
+"     let reg_save = @@
+"     call s:CopyMotionForType(a:type)
+"     execute "normal! :Ag! --literal " . shellescape(@@) . "\<cr>"
+"     let @@ = reg_save
+" endfunction
 
 " }}}
 " Rainbow Parentheses {{{
@@ -506,7 +515,7 @@ let g:airline_mode_map = {
       \ }
 " }}}
 " DBext {{{
-let g:dbext_default_profile_PG = 'type=PGSQL:user=jacques:passwd=:dbname=energyai_development'
+" let g:dbext_default_profile_PG = 'type=PGSQL:user=jacques:passwd=:dbname=energyai_development'
 " }}}
 " Better Digraphs {{{
 " inoremap <expr>  <C-K>   BDG_GetDigraph()
