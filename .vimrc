@@ -19,6 +19,7 @@ Plug 'jnurmine/Zenburn'
 Plug 'Valloric/ListToggle'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
 
+Plug 'hdima/python-syntax'
 Plug 'SirVer/ultisnips'
 
 
@@ -96,8 +97,8 @@ if has('nvim') && exists(':tnoremap')
         return lines
     endfunction
 
-    au TermCreate * let g:last_term_job_id = b:term_job_id
-    au WinEnter term://* let g:last_term_job_id = b:term_job_id
+    au TermOpen * let g:last_term_job_id = b:terminal_job_id
+    au WinEnter term://* let g:last_term_job_id = b:terminal_job_id
 
     tnoremap ˙ <c-\><c-n><c-w>h
     tnoremap ∆ <c-\><c-n><c-w>j
