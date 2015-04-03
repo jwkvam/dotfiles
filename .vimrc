@@ -373,6 +373,7 @@ let g:neomake_python_pylint_maker = {
             \ '%-G%.%#',
         \ }
 let g:neomake_python_enabled_makers = ['pylint']
+let g:neomake_sh_enabled_makers = ['shellcheck']
 let g:neomake_markdown_enabled_makers = ['make']
 " }}}
 " Syntastic {{{
