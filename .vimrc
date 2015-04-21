@@ -48,7 +48,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'kristijanhusak/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'rhysd/vim-operator-surround'
 Plug 'rhysd/vim-textobj-anyblock'
 
@@ -348,7 +348,7 @@ vmap <Enter> <Plug>(EasyAlign)
 " }}}
 " Neomake {{{
 autocmd! BufWritePost *.py Neomake
-autocmd! BufWritePost *.md Neomake!
+" autocmd! BufWritePost *.md Neomake!
 let g:neomake_error_sign = {
     \ 'text': '✗',
     \ 'texthl': 'ErrorMsg'
@@ -543,6 +543,8 @@ imap <silent> <buffer> ¡ <Plug>delimitMateS-BS
 " imap <C-\> <S-BS>
 imap <silent> <buffer> £ <Plug>delimitMateJumpMany
 imap <silent> <buffer> ¢ <Plug>delimitMateJumpMany
+
+
 " imap <silent> <buffer> <S-F2> <Plug>delimitMateS-BS
 " imap <silent> <buffer> <S-F1> <Plug>delimitMateS-BS
 " imap <silent> <buffer> <C-\>  <Plug>delimitMateS-BS
@@ -561,6 +563,7 @@ imap <silent> <buffer> ¢ <Plug>delimitMateJumpMany
 " youcompleteme {{{
 let g:python_host_prog='/usr/bin/python2.7'
 let g:ycm_path_to_python_interpreter='/usr/bin/python2.7'
+" let g:python_host_prog='/Users/jacques/anaconda/bin/python'
 " let g:ycm_path_to_python_interpreter='/Users/jacques/anaconda/bin/python'
 "
 
