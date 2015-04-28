@@ -1,5 +1,10 @@
 let $VIM = $HOME
 
+let g:python_host_prog='/usr/bin/python2.7'
+let g:ycm_path_to_python_interpreter='/usr/bin/python2.7'
+" let g:python_host_prog='/Users/jacques/miniconda/bin/python'
+" let g:ycm_path_to_python_interpreter='/Users/jacques/miniconda/bin/python'
+
 call plug#begin('~/.vim/plugged')
 
 " Plug 'dyng/ctrlsf.vim'
@@ -10,6 +15,8 @@ Plug 'junegunn/vim-after-object'
 Plug 'junegunn/vim-oblique'
 Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-peekaboo'
+
+Plug 'kassio/neoterm'
 
 Plug 'kshenoy/vim-signature'
 
@@ -31,7 +38,7 @@ Plug 'Raimondi/delimitMate'
 
 Plug 'benekastah/neomake'
 Plug 'luochen1990/rainbow'
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 Plug 'wellle/targets.vim'
 
 Plug 'tomtom/tcomment_vim'
@@ -561,12 +568,6 @@ imap <silent> <buffer> ¢ <Plug>delimitMateJumpMany
 " <C-R>=delimitMat#JumpAny()<BS>
 " }}}
 " youcompleteme {{{
-let g:python_host_prog='/usr/bin/python2.7'
-let g:ycm_path_to_python_interpreter='/usr/bin/python2.7'
-" let g:python_host_prog='/Users/jacques/anaconda/bin/python'
-" let g:ycm_path_to_python_interpreter='/Users/jacques/anaconda/bin/python'
-"
-
 let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
 let g:ycm_collect_identifiers_from_tags_files = 1
