@@ -16,7 +16,9 @@ Plug 'junegunn/vim-oblique'
 Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-peekaboo'
 
-Plug 'kassio/neoterm'
+if has('nvim') && exists(':tnoremap')
+    Plug 'kassio/neoterm'
+endif
 
 Plug 'kshenoy/vim-signature'
 
