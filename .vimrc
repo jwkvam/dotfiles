@@ -5,6 +5,8 @@ let g:ycm_path_to_python_interpreter='/usr/bin/python2.7'
 " let g:python_host_prog='/Users/jacques/miniconda/bin/python'
 " let g:ycm_path_to_python_interpreter='/Users/jacques/miniconda/bin/python'
 
+let s:nvim = has('nvim')
+
 call plug#begin('~/.vim/plugged')
 
 " Plug 'dyng/ctrlsf.vim'
@@ -15,8 +17,9 @@ Plug 'junegunn/vim-after-object'
 Plug 'junegunn/vim-oblique'
 Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-peekaboo'
+Plug 'JuliaLang/julia-vim'
 
-if has('nvim') && exists(':tnoremap')
+if s:nvim
     Plug 'kassio/neoterm'
 endif
 
@@ -36,6 +39,7 @@ Plug 'boucherm/ShowMotion'
 Plug 'tmhedberg/SimpylFold'
 " Plug 'rking/ag.vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'nixprime/cpsm', { 'do': './install.sh' }
 Plug 'Raimondi/delimitMate'
 
 Plug 'benekastah/neomake'
@@ -123,10 +127,17 @@ if has('nvim') && exists(':tnoremap')
     " tnoremap <silent> <c-w>z <c-\><c-n>:ZoomWinTabToggle<cr>
     au WinEnter term://* startinsert
 
-    nnoremap Ò <c-w>v \| :term fish<CR>
-    nnoremap Ô <c-w>s \| :term fish<CR>
+    " nnoremap Ò <c-w>v \| :term fish<CR>
+    " nnoremap Ô <c-w>s \| :term fish<CR>
+    " nnoremap  :set nosplitbelow<CR> \| <c-w>s \| :set splitbelow<CR> \| :term fish<CR>
+    " nnoremap Ó :set nosplitright<CR> \| <c-w>v \| :set splitright<CR> \| :term fish<CR>
+
+    nnoremap Ò :vsp term://fish<CR> \| :startinsert<CR>
+    nnoremap Ô :split term://fish<CR> \| :startinsert<CR>
     nnoremap  :set nosplitbelow<CR> \| <c-w>s \| :set splitbelow<CR> \| :term fish<CR>
     nnoremap Ó :set nosplitright<CR> \| <c-w>v \| :set splitright<CR> \| :term fish<CR>
+
+    " let g:neoterm_position ='horizontal'
 endif
 
 " Pathogen {{{
@@ -381,6 +392,7 @@ let g:neomake_python_pylint_maker = {
             \ '%-Z%p^%.%#,' .
             \ '%-G%.%#',
         \ }
+
 let g:neomake_python_enabled_makers = ['pylint']
 let g:neomake_sh_enabled_makers = ['shellcheck']
 let g:neomake_markdown_enabled_makers = ['make']
@@ -423,6 +435,9 @@ nnoremap <Leader>. :CtrlPTag<cr>
 let g:ctrlp_custom_ignore = {
       \ 'dir': 'datasets\|build',
       \ }
+
+let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
+" let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
 " }}}
 " Fugitive {{{
 nnoremap <Leader>gd :Gdiff<CR>
@@ -596,6 +611,7 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 " let g:UltiSnipsExpandTrigger="<Tab>"
 let g:UltiSnipsJumpForwardTrigger="<Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+let g:ultisnips_python_style="numpy"
 
 " https://github.com/Valloric/YouCompleteMe/issues/36
 " Enable tabbing through list of results
