@@ -25,8 +25,13 @@ endif
 
 Plug 'kshenoy/vim-signature'
 
+Plug 'luochen1990/indent-detector.vim'
+
 Plug 'vim-scripts/diffchar.vim'
+
+" {{{ Color Plugins
 Plug 'jnurmine/Zenburn'
+" }}}
 
 Plug 'Valloric/ListToggle'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
@@ -433,7 +438,7 @@ let g:ctrlp_map = '<c-p>'
 " let g:ctrlp_by_filename = 1
 nnoremap <Leader>. :CtrlPTag<cr>
 let g:ctrlp_custom_ignore = {
-      \ 'dir': 'datasets\|build',
+      \ 'dir': 'datasets\|build\|htmlcov',
       \ }
 
 let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
@@ -653,6 +658,7 @@ nnoremap <Leader>c :Pandoc --webtex html<CR>
 " gitgutter {{{
 " nnoremap <Leader>hp <NOP>
 let g:gitgutter_signs = 0
+let g:gitgutter_max_signs = 2000
 nnoremap  <Space><Space>hp     <Plug>GitGutterPreviewHunk
 nnoremap  <Space><Space>hr     <Plug>GitGutterRevertHunk
 nnoremap  <Space><Space>hs     <Plug>GitGutterStageHunk
