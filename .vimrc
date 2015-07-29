@@ -1,4 +1,5 @@
 let $VIM = $HOME
+" let $SHELL = /bin/bash
 
 let g:python_host_prog='/usr/bin/python2.7'
 let g:ycm_path_to_python_interpreter='/usr/bin/python2.7'
@@ -9,9 +10,9 @@ let s:nvim = has('nvim')
 
 call plug#begin('~/.vim/plugged')
 
-" Plug 'dyng/ctrlsf.vim'
+Plug 'dyng/ctrlsf.vim'
 " Plug 'jwkvam/ctrlsf.vim'
-Plug '~/dev/ctrlsf.vim'
+" Plug '~/dev/ctrlsf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-after-object'
 Plug 'junegunn/vim-oblique'
@@ -20,7 +21,7 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'JuliaLang/julia-vim'
 
 if s:nvim
-    Plug 'kassio/neoterm'
+  Plug 'kassio/neoterm'
 endif
 
 Plug 'kshenoy/vim-signature'
@@ -42,14 +43,12 @@ Plug 'SirVer/ultisnips'
 
 Plug 'boucherm/ShowMotion'
 Plug 'tmhedberg/SimpylFold'
-" Plug 'rking/ag.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nixprime/cpsm', { 'do': './install.sh' }
 Plug 'Raimondi/delimitMate'
 
 Plug 'benekastah/neomake'
 Plug 'luochen1990/rainbow'
-" Plug 'scrooloose/syntastic'
 Plug 'wellle/targets.vim'
 
 Plug 'tomtom/tcomment_vim'
@@ -61,7 +60,6 @@ Plug 'MarcWeber/vim-addon-local-vimrc'
 Plug 'MarcWeber/vim-addon-mw-utils'
 
 Plug 'bling/vim-airline'
-" Plug 'craigemery/vim-autotag'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
@@ -95,7 +93,7 @@ Plug 'blueyed/vim-diminactive'
 
 call plug#end()
 
-if has('nvim') && exists(':tnoremap')
+if s:nvim && exists(':tnoremap')
     nnoremap <silent> <f4> :REPLSendLine<cr>
     vnoremap <silent> <f4> :REPLSendSelection<cr>
 
@@ -163,7 +161,7 @@ vnoremap <C-V> v
 set shell=/bin/bash
 set scrolloff=1
 set background=dark
-set history=1000
+set history=10000
 set ruler
 set ignorecase
 set smartcase
@@ -373,6 +371,7 @@ vmap <Enter> <Plug>(EasyAlign)
 " }}}
 " Neomake {{{
 autocmd! BufWritePost *.py Neomake
+autocmd! BufWritePost *.tex Neomake
 " autocmd! BufWritePost *.md Neomake!
 let g:neomake_error_sign = {
     \ 'text': '✗',
@@ -398,20 +397,23 @@ let g:neomake_python_pylint_maker = {
             \ '%-G%.%#',
         \ }
 
+let g:neomake_verbose = 0
 let g:neomake_python_enabled_makers = ['pylint']
+" let g:neomake_python_enabled_makers = ['pep8']
 let g:neomake_sh_enabled_makers = ['shellcheck']
 let g:neomake_markdown_enabled_makers = ['make']
+let g:neomake_latex_enabled_makers = ['lacheck', 'chktex']
 " }}}
 " Syntastic {{{
-nnoremap <Leader><Leader>d :SyntasticCheck<CR>
-let g:syntastic_check_on_wq = 0
-let g:syntastic_mode_map = { "mode": "active",
-      \ "active_filetypes": ["ruby", "php"],
-      \ "passive_filetypes": ["python"] }
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
-let g:syntastic_python_checkers=['python', 'pylint']
-let g:syntastic_python_pylint_args = '--load-plugins pylint_django'
+" nnoremap <Leader><Leader>d :SyntasticCheck<CR>
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_mode_map = { "mode": "active",
+"       \ "active_filetypes": ["ruby", "php"],
+"       \ "passive_filetypes": ["python"] }
+" let g:syntastic_error_symbol = "✗"
+" let g:syntastic_warning_symbol = "⚠"
+" let g:syntastic_python_checkers=['python', 'pylint']
+" let g:syntastic_python_pylint_args = '--load-plugins pylint_django'
 " let g:syntastic_python_pylint_args = '--load-plugins pylint_django -E'
 
 " let g:syntastic_python_checkers=['python', 'flake8']
@@ -430,7 +432,7 @@ let g:syntastic_python_pylint_args = '--load-plugins pylint_django'
 " let g:syntastic_python_flake8_args .= ',E702'
 " " visually indented line with same indent as next logical line [E129]
 " let g:syntastic_python_flake8_args .= ',E129'
-let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_always_populate_loc_list = 1
 " }}}
 " CtrlP {{{
 let g:ctrlp_map = '<c-p>'
