@@ -49,6 +49,7 @@ Plug 'Raimondi/delimitMate'
 
 Plug 'benekastah/neomake'
 Plug 'luochen1990/rainbow'
+" Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'wellle/targets.vim'
 
 Plug 'tomtom/tcomment_vim'
@@ -79,6 +80,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-rsi'
+Plug 'tpope/vim-eunuch'
 
 Plug 'dhruvasagar/vim-prosession'
 
@@ -281,7 +283,7 @@ set wildignore+=*.swp
 " git
 set wildignore+=.git
 " latex
-set wildignore+=*.aux,*.fls,*.out,*.pdf,*.fdb_latexmk
+set wildignore+=*.aux,*.fls,*.out,*.pdf,*.fdb_latexmk,*.blg,*.bbl
 " }}}
 
 let mapleader = "\<space>"
@@ -404,36 +406,6 @@ let g:neomake_sh_enabled_makers = ['shellcheck']
 let g:neomake_markdown_enabled_makers = ['make']
 let g:neomake_latex_enabled_makers = ['lacheck', 'chktex']
 " }}}
-" Syntastic {{{
-" nnoremap <Leader><Leader>d :SyntasticCheck<CR>
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_mode_map = { "mode": "active",
-"       \ "active_filetypes": ["ruby", "php"],
-"       \ "passive_filetypes": ["python"] }
-" let g:syntastic_error_symbol = "✗"
-" let g:syntastic_warning_symbol = "⚠"
-" let g:syntastic_python_checkers=['python', 'pylint']
-" let g:syntastic_python_pylint_args = '--load-plugins pylint_django'
-" let g:syntastic_python_pylint_args = '--load-plugins pylint_django -E'
-
-" let g:syntastic_python_checkers=['python', 'flake8']
-" let g:syntastic_python_flake8_args = '--ignore=E501'
-" " indent multiple of 4
-" let g:syntastic_python_flake8_args .= ',E111'
-" " line is underindented
-" let g:syntastic_python_flake8_args .= ',E128'
-" " line underindented for hanging indent
-" let g:syntastic_python_flake8_args .= ',E121'
-" " continuation line with same indent as logical line
-" let g:syntastic_python_flake8_args .= ',E125'
-" " continuation line over indented
-" let g:syntastic_python_flake8_args .= ',E127'
-" " multiple statements on one line (debuggers)
-" let g:syntastic_python_flake8_args .= ',E702'
-" " visually indented line with same indent as next logical line [E129]
-" let g:syntastic_python_flake8_args .= ',E129'
-" let g:syntastic_always_populate_loc_list = 1
-" }}}
 " CtrlP {{{
 let g:ctrlp_map = '<c-p>'
 " let g:ctrlp_cmd = 'CtrlPMixed'
@@ -449,11 +421,6 @@ let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
 " Fugitive {{{
 nnoremap <Leader>gd :Gdiff<CR>
 nnoremap <Leader>gb :Gblame<CR>
-" }}}
-" Jedi-vim {{{
-" let g:jedi#use_splits_not_buffers = "left"
-" let g:jedi#popup_on_dot = 0
-let g:jedi#show_call_signatures = 1
 " }}}
 " supertab {{{
 " let g:SuperTabDefaultCompletionType = "context"
