@@ -35,7 +35,7 @@ Plug 'jnurmine/Zenburn'
 " }}}
 
 Plug 'Valloric/ListToggle'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 
 Plug 'hdima/python-syntax'
 Plug 'SirVer/ultisnips'
@@ -205,6 +205,7 @@ filetype indent on
 " autocmd FileType startify setlocal fdm=manual
 
 autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNewFile *.tex setlocal spell
 
 " Window dimensions {{{
 set winheight=30
