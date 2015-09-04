@@ -248,6 +248,15 @@ let loaded_matchparen=1
 
 " set lazyredraw
 
+" {{{ clipboard paste
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+" }}}
+
 " {{{ Searching
 " nnoremap <silent> * :let stay_star_view = winsaveview()<cr>*:call winrestview(stay_star_view)<cr>:set hlsearch<cr>
 " nnoremap n nzzzv
@@ -497,6 +506,7 @@ autocmd User ObliqueStar   normal! zz
 autocmd User ObliqueRepeat normal! zz
 " }}}
 " Airline {{{
+let g:airline_theme='powerlineish'
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline#extensions#tabline#fnamemod = ':~'
