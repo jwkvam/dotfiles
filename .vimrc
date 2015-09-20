@@ -78,7 +78,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-vinegar'
+" Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-eunuch'
 
@@ -88,6 +88,7 @@ Plug 'kana/vim-operator-user'
 Plug 'kana/vim-textobj-user'
 
 Plug 'blueyed/vim-diminactive'
+Plug 't9md/vim-choosewin'
 
 " Plug 'bfredl/nvim-ipy'
 
@@ -735,7 +736,6 @@ highlight ColorColumn ctermbg=236 guibg=#334444
 " σ
 :dig ss 963
 " }}}
-
 " {{{ quick replace
 function! s:gn_next()
   augroup gn_next_repeat
@@ -762,6 +762,10 @@ xmap <Plug>(quick-replace) :<c-u>call <SID>match_visual()<cr>c<Plug>(gn-next)
 
 nmap <leader>f <Plug>(quick-replace)
 xmap <leader>f <Plug>(quick-replace)
+" }}}
+" {{{ choosewin
+nmap - <Plug>(choosewin)
+let g:choosewin_overlay_enable = 1
 " }}}
 
 nnoremap <Leader>d :ll!<CR>
