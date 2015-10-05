@@ -35,7 +35,11 @@ Plug 'jnurmine/Zenburn'
 " }}}
 
 Plug 'Valloric/ListToggle'
-Plug 'Valloric/YouCompleteMe', { 'do': 'PATH=/usr/bin:$PATH ./install.py --clang-completer' }
+if has("mac")
+  Plug 'Valloric/YouCompleteMe', { 'do': 'PATH=/usr/bin:$PATH ./install.py --clang-completer' }
+elseif has("unix")
+  Plug 'Valloric/YouCompleteMe', { 'do': 'python2.7 install.py --clang-completer' }
+endif
 
 Plug 'hdima/python-syntax'
 Plug 'SirVer/ultisnips'
