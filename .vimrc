@@ -94,6 +94,8 @@ Plug 'kana/vim-textobj-user'
 Plug 'blueyed/vim-diminactive'
 Plug 't9md/vim-choosewin'
 
+Plug 'lervag/vimtex'
+
 " Plug 'bfredl/nvim-ipy'
 
 " Plug '~/.vim/custom/dim_inactive'
@@ -249,7 +251,9 @@ set showmatch
 set cursorline
 set matchtime=1
 set equalalways
-let loaded_matchparen=1
+" Not sure why I had this here
+" but it causes an error with vimtex
+" let loaded_matchparen=1
 
 " set lazyredraw
 
