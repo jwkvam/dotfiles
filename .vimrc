@@ -95,9 +95,7 @@ Plug 'blueyed/vim-diminactive'
 Plug 't9md/vim-choosewin'
 
 Plug 'lervag/vimtex'
-
 " Plug 'bfredl/nvim-ipy'
-
 " Plug '~/.vim/custom/dim_inactive'
 
 call plug#end()
@@ -152,11 +150,6 @@ if s:nvim && exists(':tnoremap')
     " let g:neoterm_position ='horizontal'
 endif
 
-" Pathogen {{{
-" execute pathogen#infect()
-" execute pathogen#helptags()
-" }}}
-
 " Basic options {{{
 syntax enable
 syntax sync fromstart
@@ -169,7 +162,6 @@ vnoremap <C-V> v
 
 set shell=/bin/bash
 set scrolloff=1
-set background=dark
 set history=10000
 set ruler
 set ignorecase
@@ -193,12 +185,16 @@ set formatoptions=cqrt
 
 set ssop=blank,buffers,curdir,folds,help,options,tabpages,winsize
 
+let python_highlight_all=1
+
 " Colorscheme {{{
 " set t_Co=256
 " let g:zenburn_high_Contrast=1
 colorscheme zenburn
-hi search ctermbg=223 ctermfg=238
-hi incsearch ctermbg=216 ctermfg=242
+" colorscheme gruvbox
+" hi search ctermbg=223 ctermfg=238
+" hi incsearch ctermbg=216 ctermfg=242
+set background=dark
 " }}}
 
 " swap i_CTRL-C and i_CTRL-[
@@ -278,6 +274,9 @@ map <C-F> :set hls!<bar> set hls?<CR>
 set laststatus=2
 set title
 set viminfo='100,f0
+" if s:nvim
+"   set shada='100,f0
+" endif
 set foldmethod=indent
 set foldlevelstart=1
 set foldnestmax=20
@@ -290,7 +289,7 @@ autocmd BufWritePre *.py :%s/\s\+$//e
 
 " recall cursor position for file {{{
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
-                         \ exe "normal g'\"" | endif
+      \ exe "normal g'\"" | endif
 " }}}
 
 " Files to ignore {{{
