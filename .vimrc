@@ -8,7 +8,7 @@ let g:ycm_path_to_python_interpreter='/usr/bin/python2.7'
 
 let s:nvim = has('nvim')
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 Plug 'dyng/ctrlsf.vim'
 " Plug 'jwkvam/ctrlsf.vim'
@@ -43,7 +43,6 @@ endif
 
 Plug 'hdima/python-syntax'
 Plug 'SirVer/ultisnips'
-
 
 Plug 'boucherm/ShowMotion'
 Plug 'tmhedberg/SimpylFold'
@@ -514,7 +513,9 @@ autocmd User ObliqueStar   normal! zz
 autocmd User ObliqueRepeat normal! zz
 " }}}
 " Airline {{{
-let g:airline_theme='powerlineish'
+" let g:airline_theme='powerlineish'
+let g:airline_theme='zenburn'
+let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline#extensions#tabline#fnamemod = ':~'
