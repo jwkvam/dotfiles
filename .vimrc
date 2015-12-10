@@ -20,6 +20,8 @@ Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-peekaboo'
 Plug 'JuliaLang/julia-vim'
 
+Plug 'jreybert/vimagit'
+
 if s:nvim
   Plug 'kassio/neoterm'
 endif
@@ -285,6 +287,7 @@ set noro
 
 " remove trailing whitespace from python files
 autocmd BufWritePre *.py :%s/\s\+$//e
+autocmd BufWritePre *.tex :%s/\s\+$//e
 
 " recall cursor position for file {{{
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -338,7 +341,7 @@ noremap + <C-W>>
 " Highlight Margin {{{
 hi ColorMargin ctermbg=magenta
 
-function! MarkMargin (on)
+function! MarkMargin (on, margin)
     if exists('b:MarkMargin')
         try
             call matchdelete(b:MarkMargin)
@@ -347,13 +350,13 @@ function! MarkMargin (on)
         unlet b:MarkMargin
     endif
     if a:on
-        let b:MarkMargin = matchadd('ColorMargin', '\%81v', 100)
+        let b:MarkMargin = matchadd('ColorMargin', '\%' . (a:margin + 1) . 'v', 100)
     endif
 endfunction
 
 augroup MarkMargin
     autocmd!
-    autocmd  BufEnter *.py :call MarkMargin(1)
+    autocmd  BufEnter *.py :call MarkMargin(1, 100)
 augroup END
 " }}}
 
