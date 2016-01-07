@@ -1,0 +1,11 @@
+/*
+Placeholder for custom user CSS
+
+mainly to be overridden in profile/static/custom/custom.css
+
+This will always be an empty file in IPython
+*/
+
+.container { width:95% !important; }
+
+div.cell + .edit_mode + &.selected { border-color: red; }

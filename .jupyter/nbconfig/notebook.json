@@ -1,0 +1,6 @@
+{
+  "load_extensions": {
+    "jupyter-vim-binding/vim_binding": true,
+    "minrk/nbextensions/toc": true
+  }
+}
