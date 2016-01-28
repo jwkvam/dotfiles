@@ -1,4 +1,4 @@
-let $VIM = $HOME
+" let $VIM = $HOME/.config/nvim
 " let $SHELL = /bin/bash
 
 let g:python_host_prog='/usr/bin/python2.7'
@@ -28,7 +28,7 @@ endif
 
 Plug 'kshenoy/vim-signature'
 
-Plug 'luochen1990/indent-detector.vim'
+" Plug 'luochen1990/indent-detector.vim'
 
 Plug 'vim-scripts/diffchar.vim'
 
@@ -65,7 +65,9 @@ Plug 'mbbill/undotree'
 Plug 'MarcWeber/vim-addon-local-vimrc'
 Plug 'MarcWeber/vim-addon-mw-utils'
 
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+" Plug 'itchyny/lightline.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
@@ -80,14 +82,16 @@ Plug 'hynek/vim-python-pep8-indent'
 Plug 'honza/vim-snippets'
 
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-unimpaired'
 " Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-eunuch'
 
-Plug 'dhruvasagar/vim-prosession'
+" Plug 'tpope/vim-obsession'
+" Plug 'dhruvasagar/vim-prosession'
+
+Plug 'mhinz/vim-startify'
 
 Plug 'kana/vim-operator-user'
 Plug 'kana/vim-textobj-user'
@@ -408,8 +412,7 @@ let g:neomake_python_pylint_maker = {
             \ 'args': [
             \ '-f', 'text',
             \ '--msg-template="{path}:{line}:{column}:{C}: [{symbol}] {msg}"',
-            \ '-r', 'n',
-            \ '--load-plugins', 'pylint_django'
+            \ '-r', 'n'
         \ ],
         \ 'errorformat':
             \ '%A%f:%l:%c:%t: %m,' .
@@ -418,6 +421,8 @@ let g:neomake_python_pylint_maker = {
             \ '%-Z%p^%.%#,' .
             \ '%-G%.%#',
         \ }
+
+            " \ '--load-plugins', 'pylint_django'
 
 let g:neomake_verbose = 0
 let g:neomake_python_enabled_makers = ['pylint']
@@ -518,6 +523,7 @@ autocmd User ObliqueRepeat normal! zz
 " Airline {{{
 " let g:airline_theme='powerlineish'
 let g:airline_theme='zenburn'
+let g:airline_inactive_collapse = 1
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
@@ -649,7 +655,7 @@ nnoremap <Leader>c :Pandoc --webtex html<CR>
 " }}}
 " gitgutter {{{
 " nnoremap <Leader>hp <NOP>
-let g:gitgutter_signs = 0
+let g:gitgutter_signs = 1
 let g:gitgutter_max_signs = 2000
 nnoremap  <Space><Space>hp     <Plug>GitGutterPreviewHunk
 nnoremap  <Space><Space>hr     <Plug>GitGutterRevertHunk
