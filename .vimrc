@@ -46,13 +46,13 @@ endif
 Plug 'hdima/python-syntax'
 Plug 'SirVer/ultisnips'
 
-Plug 'boucherm/ShowMotion'
+" Plug 'boucherm/ShowMotion'
 Plug 'tmhedberg/SimpylFold'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nixprime/cpsm', { 'do': 'PATH=/usr/bin:$PATH ./install.sh' }
 Plug 'Raimondi/delimitMate'
 
-Plug 'benekastah/neomake'
+Plug 'benekastah/neomake', {'commit': '5888211'}
 Plug 'luochen1990/rainbow'
 " Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'wellle/targets.vim'
