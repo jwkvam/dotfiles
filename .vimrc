@@ -20,6 +20,8 @@ Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-peekaboo'
 Plug 'JuliaLang/julia-vim'
 
+
+Plug 'mhinz/vim-janah'
 Plug 'jreybert/vimagit'
 
 if s:nvim
@@ -27,6 +29,11 @@ if s:nvim
 endif
 
 Plug 'kshenoy/vim-signature'
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'}
+Plug 'junegunn/fzf.vim'
+
+Plug 'janko-m/vim-test'
 
 " Plug 'luochen1990/indent-detector.vim'
 
@@ -48,11 +55,12 @@ Plug 'SirVer/ultisnips'
 
 " Plug 'boucherm/ShowMotion'
 Plug 'tmhedberg/SimpylFold'
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nixprime/cpsm', { 'do': 'PATH=/usr/bin:$PATH ./install.sh' }
 Plug 'Raimondi/delimitMate'
 
-Plug 'benekastah/neomake', {'commit': '5888211'}
+" Plug 'benekastah/neomake', {'commit': '5888211'}
+Plug 'benekastah/neomake'
 Plug 'luochen1990/rainbow'
 " Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'wellle/targets.vim'
@@ -69,7 +77,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug 'itchyny/lightline.vim'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'Lokaltog/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'terryma/vim-multiple-cursors'
@@ -196,6 +204,7 @@ let python_highlight_all=1
 " set t_Co=256
 " let g:zenburn_high_Contrast=1
 colorscheme zenburn
+" colorscheme janah
 " colorscheme gruvbox
 " hi search ctermbg=223 ctermfg=238
 " hi incsearch ctermbg=216 ctermfg=242
@@ -408,6 +417,23 @@ let g:neomake_warning_sign = {
     \ 'texthl': 'WarningMsg'
     \ }
 
+function Pylinterrors(entry)
+    if a:entry.type ==# 'F'  " Fatal error which prevented further processing
+        let type = 'E'
+    elseif a:entry.type ==# 'E'  " Error for important programming issues
+        let type = 'E'
+    elseif a:entry.type ==# 'W'  " Warning for stylistic or minor programming issues
+        let type = 'W'
+    elseif a:entry.type ==# 'R'  " Refactor suggestion
+        let type = 'W'
+    elseif a:entry.type ==# 'C'  " Convention violation
+        let type = 'W'
+    else
+        let type = ''
+    endif
+    let a:entry.type = type
+endfunction
+
 let g:neomake_python_pylint_maker = {
             \ 'args': [
             \ '-f', 'text',
@@ -420,8 +446,8 @@ let g:neomake_python_pylint_maker = {
             \ '%A%f:(%l): %m,' .
             \ '%-Z%p^%.%#,' .
             \ '%-G%.%#',
-        \ }
-
+            \ 'postprocess': function('Pylinterrors')
+            \ }
             " \ '--load-plugins', 'pylint_django'
 
 let g:neomake_verbose = 0
@@ -431,16 +457,41 @@ let g:neomake_sh_enabled_makers = ['shellcheck']
 let g:neomake_markdown_enabled_makers = ['make']
 let g:neomake_latex_enabled_makers = ['lacheck', 'chktex']
 " }}}
+" FZF {{{
+" noremap <silent> <C-p> :call fzf#run()<CR>
+" noremap <silent> <C-p> :call fzf#run()<CR>
+" Open files in horizontal split
+
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+
+command! ProjectFiles execute 'Files' s:find_git_root()
+
+nnoremap <silent> <c-p> :ProjectFiles<CR>
+nnoremap <silent> <leader>. :Tags<CR>
+let g:fzf_layout = {'down': '~40%'}
+let g:fzf_action = {
+            \ 'ctrl-s': 'split',
+            \ 'ctrl-v': 'vsplit'
+            \ }
+
+" xmap <C-p> <plug>(fzf-maps-x)
+" omap <C-p> <plug>(fzf-maps-o)
+" nmap <leader>. <plug>(fzf-maps-n)
+" xmap <leader>. <plug>(fzf-maps-x)
+" omap <leader>. <plug>(fzf-maps-o)
+" }}}
 " CtrlP {{{
-let g:ctrlp_map = '<c-p>'
+" let g:ctrlp_map = '<c-p>'
 " let g:ctrlp_cmd = 'CtrlPMixed'
 " let g:ctrlp_by_filename = 1
-nnoremap <Leader>. :CtrlPTag<cr>
-let g:ctrlp_custom_ignore = {
-      \ 'dir': 'datasets\|build\|htmlcov',
-      \ }
-
-let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
+" nnoremap <Leader>. :CtrlPTag<cr>
+" let g:ctrlp_custom_ignore = {
+"       \ 'dir': 'datasets\|build\|htmlcov',
+"       \ }
+"
+" let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
 " let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
 " }}}
 " Fugitive {{{
@@ -461,7 +512,7 @@ nmap <Leader>s <Plug>CtrlSFCwordExec
 vmap <Leader>s <Plug>CtrlSFVwordExec
 " nnoremap <C-F>n <Plug>(CtrlSFPrompt)
 " xnoremap <C-F>f <Plug>(CtrlSFVwordExec)
-" }}} 
+" }}}
 " Ag motions {{{
 
 " Motions to Ag for things.  Works with pretty much everything, including:
@@ -523,6 +574,8 @@ autocmd User ObliqueRepeat normal! zz
 " Airline {{{
 " let g:airline_theme='powerlineish'
 let g:airline_theme='zenburn'
+" let g:airline_theme='base16'
+" let g:airline_theme='murrmur'
 let g:airline_inactive_collapse = 1
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
@@ -702,13 +755,16 @@ let g:SignatureDeferPlacement=0
 "         return 'GitGutterDelete'
 "     endif
 " endfunction
-"  
+"
 " " Next, assign it to g:SignatureMarkTextHL
 " let g:SignatureMarkTextHL = 'SignatureGitGutter(a:lnum)'
- 
+
 " Now everytime Signature wants to place a sign, it calls this function and thus, we can dynamically assign a Highlight group g:SignatureMarkTextHL
 " The advantage of doing it this way is that this decouples Signature from git-gutter. Both can remain unaware of the other.
 
+" }}}
+" {{{ vim-test
+let test#strategy = 'neoterm'
 " }}}
 " {{{ diminactive
 highlight ColorColumn ctermbg=236 guibg=#334444
