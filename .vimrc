@@ -56,7 +56,7 @@ Plug 'SirVer/ultisnips'
 " Plug 'boucherm/ShowMotion'
 Plug 'tmhedberg/SimpylFold'
 " Plug 'ctrlpvim/ctrlp.vim'
-Plug 'nixprime/cpsm', { 'do': 'PATH=/usr/bin:$PATH ./install.sh' }
+" Plug 'nixprime/cpsm', { 'do': 'PATH=/usr/bin:$PATH ./install.sh' }
 Plug 'Raimondi/delimitMate'
 
 " Plug 'benekastah/neomake', {'commit': '5888211'}
