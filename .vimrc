@@ -458,6 +458,9 @@ let g:neomake_markdown_enabled_makers = ['make']
 let g:neomake_latex_enabled_makers = ['lacheck', 'chktex']
 " }}}
 " FZF {{{
+" Set the following env variable to get nice file filtering
+" FZF_DEFAULT_COMMAND 'ag -g ""'
+
 " noremap <silent> <C-p> :call fzf#run()<CR>
 " noremap <silent> <C-p> :call fzf#run()<CR>
 " Open files in horizontal split
