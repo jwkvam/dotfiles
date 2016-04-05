@@ -1,8 +1,18 @@
 " let $VIM = $HOME/.config/nvim
 " let $SHELL = /bin/bash
+"
+
+" let g:python_host_prog='/Users/jacques/miniconda/bin/python'
+" let g:python3_host_prog='/Users/jacques/miniconda/envs/py35/bin/python3'
+" let g:ycm_path_to_python_interpreter='/Users/jacques/miniconda/bin/python'
+" let g:ycm_python_binary_path='/Users/jacques/miniconda/bin/python'
+" let g:ycm_path_to_python_interpreter='/Users/jacques/miniconda/bin/python'
 
 let g:python_host_prog='/usr/bin/python2.7'
+let g:python3_host_prog='/Users/jacques/miniconda/envs/py35/bin/python3'
 let g:ycm_path_to_python_interpreter='/usr/bin/python2.7'
+let g:ycm_python_binary_path='/usr/bin/python2.7'
+" let g:ycm_python_binary_path='/Users/jacques/miniconda/bin/python'
 " let g:python_host_prog='/Users/jacques/miniconda/bin/python'
 " let g:ycm_path_to_python_interpreter='/Users/jacques/miniconda/bin/python'
 
@@ -10,6 +20,7 @@ let s:nvim = has('nvim')
 
 call plug#begin('~/.config/nvim/plugged')
 
+" Plug 'justinmk/vim-dirvish'
 Plug 'dyng/ctrlsf.vim'
 " Plug 'jwkvam/ctrlsf.vim'
 " Plug '~/dev/ctrlsf.vim'
@@ -19,7 +30,13 @@ Plug 'junegunn/vim-oblique'
 Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-peekaboo'
 Plug 'JuliaLang/julia-vim'
+Plug 'lambdatoast/elm.vim'
+" Plug 'mxw/vim-jsx'
+" Plug 'othree/vajs.vim'
+" Plug 'othree/vajs.vim'
+Plug 'pangloss/vim-javascript', {'branch': 'develop'}
 
+Plug 'hecal3/vim-leader-guide'
 
 Plug 'mhinz/vim-janah'
 Plug 'jreybert/vimagit'
@@ -35,6 +52,8 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'janko-m/vim-test'
 
+Plug 'kballard/vim-fish'
+
 " Plug 'luochen1990/indent-detector.vim'
 
 Plug 'vim-scripts/diffchar.vim'
@@ -44,6 +63,9 @@ Plug 'jnurmine/Zenburn'
 " }}}
 
 Plug 'Valloric/ListToggle'
+
+" Plug 'Shougo/deoplete.nvim'
+" Plug 'zchee/deoplete-jedi'
 if has("mac")
   Plug 'Valloric/YouCompleteMe', { 'do': 'PATH=/usr/bin:$PATH ./install.py --clang-completer' }
 elseif has("unix")
@@ -85,6 +107,7 @@ Plug 'rhysd/vim-operator-surround'
 Plug 'rhysd/vim-textobj-anyblock'
 
 Plug 'osyo-manga/vim-over'
+Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'honza/vim-snippets'
@@ -92,7 +115,7 @@ Plug 'honza/vim-snippets'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-unimpaired'
-" Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-eunuch'
 
@@ -214,7 +237,7 @@ set background=dark
 " swap i_CTRL-C and i_CTRL-[
 inoremap <C-[> <C-c>
 inoremap <C-c> <Esc>
-inoremap jk <Esc>
+" inoremap jk <Esc>
 
 filetype plugin on
 filetype indent on
@@ -284,6 +307,10 @@ set incsearch
 set nohlsearch
 map <C-F> :set hls!<bar> set hls?<CR>
 " }}}
+
+" imap <C-S-o> <esc>O
+" imap <C-o> <esc>o
+
 
 set laststatus=2
 set title
@@ -406,6 +433,7 @@ vmap <Enter> <Plug>(EasyAlign)
 " }}}
 " Neomake {{{
 autocmd! BufWritePost *.py Neomake
+autocmd! BufWritePost *.js* Neomake
 autocmd! BufWritePost *.tex Neomake
 " autocmd! BufWritePost *.md Neomake!
 let g:neomake_error_sign = {
@@ -452,6 +480,7 @@ let g:neomake_python_pylint_maker = {
 
 let g:neomake_verbose = 0
 let g:neomake_python_enabled_makers = ['pylint']
+let g:neomake_javascript_enabled_makers = ['eslint']
 " let g:neomake_python_enabled_makers = ['pep8']
 let g:neomake_sh_enabled_makers = ['shellcheck']
 let g:neomake_markdown_enabled_makers = ['make']
@@ -643,16 +672,23 @@ imap <silent> <buffer> ¢ <Plug>delimitMateJumpMany
 " hell({})
 " <C-R>=delimitMat#JumpAny()<BS>
 " }}}
+" deoplete {{{
+" autocmd CompleteDone * pclose!
+" let g:deoplete#enable_at_startup = 1
+" }}}
 " youcompleteme {{{
 let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_comments = 1
+let g:ycm_min_num_of_chars_for_completion = 2
+let g:ycm_server_log_level = 'info'
 
-let g:ycm_add_preview_to_completeopt = 1
+set completeopt=menuone
+let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_completion = 0
 let g:ycm_seed_identifiers_with_syntax = 1
 
 
@@ -766,6 +802,12 @@ let g:SignatureDeferPlacement=0
 " The advantage of doing it this way is that this decouples Signature from git-gutter. Both can remain unaware of the other.
 
 " }}}
+" {{{
+let g:lmap = {}
+call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
+nnoremap <silent> <leader> :LeaderGuide '<Space>'<CR>
+vnoremap <silent> <leader> :LeaderGuideVisual '<Space>'<CR>
+" }}}
 " {{{ vim-test
 let test#strategy = 'neoterm'
 " }}}
@@ -840,7 +882,7 @@ nmap <leader>f <Plug>(quick-replace)
 xmap <leader>f <Plug>(quick-replace)
 " }}}
 " {{{ choosewin
-nmap - <Plug>(choosewin)
+nmap Q <Plug>(choosewin)
 let g:choosewin_overlay_enable = 1
 " }}}
 
