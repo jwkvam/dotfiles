@@ -35,8 +35,10 @@ Plug 'lambdatoast/elm.vim'
 " Plug 'othree/vajs.vim'
 " Plug 'othree/vajs.vim'
 Plug 'pangloss/vim-javascript', {'branch': 'develop'}
+Plug 'uarun/vim-protobuf'
 
 Plug 'hecal3/vim-leader-guide'
+Plug 'naddeoa/vim-visual-page-percent'
 
 Plug 'mhinz/vim-janah'
 Plug 'jreybert/vimagit'
@@ -307,10 +309,6 @@ set incsearch
 set nohlsearch
 map <C-F> :set hls!<bar> set hls?<CR>
 " }}}
-
-" imap <C-S-o> <esc>O
-" imap <C-o> <esc>o
-
 
 set laststatus=2
 set title
@@ -614,6 +612,9 @@ let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline#extensions#tabline#fnamemod = ':~'
 let g:airline#extensions#tabline#fnamecollapse = 1
+" let g:airline_section_z = '(%{VisualPercent()}, line number, column number)'
+" let g:airline_section_z = airline#section#create(['windowswap', '%3p%%'.spc, 'linenr', ':%3v '])
+let g:airline_section_z = airline#section#create(['windowswap', '%{VisualPercent()}', 'linenr', ':%3v '])
 let g:airline_mode_map = {
       \ '__' : '-',
       \ 'n'  : 'N',
