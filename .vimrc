@@ -30,17 +30,17 @@ Plug 'junegunn/vim-oblique'
 Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-peekaboo'
 Plug 'JuliaLang/julia-vim'
-Plug 'lambdatoast/elm.vim'
+" Plug 'lambdatoast/elm.vim'
 " Plug 'mxw/vim-jsx'
 " Plug 'othree/vajs.vim'
 " Plug 'othree/vajs.vim'
 Plug 'pangloss/vim-javascript', {'branch': 'develop'}
 Plug 'uarun/vim-protobuf'
+Plug '~/.config/nvim/kite'
 
 Plug 'hecal3/vim-leader-guide'
 Plug 'naddeoa/vim-visual-page-percent'
 
-Plug 'mhinz/vim-janah'
 Plug 'jreybert/vimagit'
 
 if s:nvim
@@ -62,6 +62,9 @@ Plug 'vim-scripts/diffchar.vim'
 
 " {{{ Color Plugins
 Plug 'jnurmine/Zenburn'
+Plug 'morhetz/gruvbox'
+Plug 'mhinz/vim-janah'
+Plug 'junegunn/seoul256.vim'
 " }}}
 
 Plug 'Valloric/ListToggle'
@@ -102,6 +105,7 @@ Plug 'vim-airline/vim-airline-themes'
 " Plug 'itchyny/lightline.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'easymotion/vim-easymotion'
+" Plug 'justinmk/vim-sneak'
 Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'terryma/vim-multiple-cursors'
@@ -189,10 +193,11 @@ if s:nvim && exists(':tnoremap')
 endif
 
 " Basic options {{{
-syntax enable
-syntax sync fromstart
+" syntax enable
+" syntax sync fromstart
 
 nnoremap ; :
+" nnoremap : ;
 nnoremap v <C-V>
 nnoremap <C-V> v
 vnoremap v <C-V>
@@ -201,6 +206,7 @@ vnoremap <C-V> v
 set shell=/bin/bash
 set scrolloff=1
 set history=10000
+set termguicolors
 set ruler
 set ignorecase
 set smartcase
@@ -228,8 +234,9 @@ let python_highlight_all=1
 " Colorscheme {{{
 " set t_Co=256
 " let g:zenburn_high_Contrast=1
-colorscheme zenburn
+" colorscheme zenburn
 " colorscheme janah
+colorscheme seoul256
 " colorscheme gruvbox
 " hi search ctermbg=223 ctermfg=238
 " hi incsearch ctermbg=216 ctermfg=242
@@ -241,8 +248,8 @@ inoremap <C-[> <C-c>
 inoremap <C-c> <Esc>
 " inoremap jk <Esc>
 
-filetype plugin on
-filetype indent on
+" filetype plugin on
+" filetype indent on
 
 " autocmd FileType startify setlocal fdm=manual
 
@@ -538,7 +545,7 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " }}}
 " {{{ ctrlsf
 " nnoremap <Leader>s :CtrlSFOpen<CR>
-nmap <Leader>s <Plug>CtrlSFCwordExec
+nmap <Leader>s <Plug>CtrlSFCwordPath
 vmap <Leader>s <Plug>CtrlSFVwordExec
 " nnoremap <C-F>n <Plug>(CtrlSFPrompt)
 " xnoremap <C-F>f <Plug>(CtrlSFVwordExec)
@@ -744,6 +751,7 @@ inoremap <return> <C-R>=Ulti_ExpandOrEnter()<CR>
 
 " }}}
 " pandoc {{{
+let g:pandoc#syntax#conceal#use = 0
 nnoremap <Leader>c :Pandoc --webtex html<CR>
 " }}}
 " gitgutter {{{
@@ -764,6 +772,7 @@ autocmd VimEnter * call after_object#enable('=', '#')
 " vim-operator-surround {{{
 
 " operator mappings
+" TODO resolve this with vim-sneak
 map <silent>sa <Plug>(operator-surround-append)
 map <silent>sd <Plug>(operator-surround-delete)
 map <silent>sr <Plug>(operator-surround-replace)
