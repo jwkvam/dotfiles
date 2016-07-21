@@ -34,7 +34,7 @@ Plug 'JuliaLang/julia-vim'
 " Plug 'mxw/vim-jsx'
 " Plug 'othree/vajs.vim'
 " Plug 'othree/vajs.vim'
-Plug 'pangloss/vim-javascript', {'branch': 'develop'}
+Plug 'pangloss/vim-javascript'
 Plug 'uarun/vim-protobuf'
 Plug '~/.config/nvim/kite'
 
@@ -247,6 +247,10 @@ set background=dark
 inoremap <C-[> <C-c>
 inoremap <C-c> <Esc>
 " inoremap jk <Esc>
+"
+
+inoremap ;u <Esc>viwUea
+inoremap <c-l> <Esc>viwUea
 
 " filetype plugin on
 " filetype indent on
@@ -378,6 +382,7 @@ nnoremap <silent> <Tab> @=(foldlevel('.')?'za':"\<Space>")<CR>
 
 set splitbelow
 set splitright
+
 
 noremap _ <C-W><
 noremap + <C-W>>
@@ -545,6 +550,7 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " }}}
 " {{{ ctrlsf
 " nnoremap <Leader>s :CtrlSFOpen<CR>
+let g:ctrlsf_ackprg='ag'
 nmap <Leader>s <Plug>CtrlSFCwordPath
 vmap <Leader>s <Plug>CtrlSFVwordExec
 " nnoremap <C-F>n <Plug>(CtrlSFPrompt)
@@ -621,6 +627,8 @@ let g:airline#extensions#tabline#fnamemod = ':~'
 let g:airline#extensions#tabline#fnamecollapse = 1
 " let g:airline_section_z = '(%{VisualPercent()}, line number, column number)'
 " let g:airline_section_z = airline#section#create(['windowswap', '%3p%%'.spc, 'linenr', ':%3v '])
+"
+let g:visualPagePercent_display_width=10
 let g:airline_section_z = airline#section#create(['windowswap', '%{VisualPercent()}', 'linenr', ':%3v '])
 let g:airline_mode_map = {
       \ '__' : '-',
@@ -685,8 +693,8 @@ imap <silent> <buffer> ¢ <Plug>delimitMateJumpMany
 " let g:deoplete#enable_at_startup = 1
 " }}}
 " youcompleteme {{{
-let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
+" let g:ycm_key_list_select_completion=['<C-n>']  ", '<Down>']
+" let g:ycm_key_list_previous_completion=['<C-p>']  ", '<Up>']
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_comments = 1
