@@ -9,7 +9,8 @@
 " let g:ycm_path_to_python_interpreter='/Users/jacques/miniconda/bin/python'
 
 let g:python_host_prog='/usr/bin/python2.7'
-let g:python3_host_prog='/Users/jacques/miniconda/envs/py35/bin/python3'
+let g:python2_host_prog='/usr/bin/python2.7'
+let g:python3_host_prog='/Users/jacques/miniconda/bin/python3'
 let g:ycm_path_to_python_interpreter='/usr/bin/python2.7'
 let g:ycm_python_binary_path='/usr/bin/python2.7'
 " let g:ycm_python_binary_path='/Users/jacques/miniconda/bin/python'
@@ -72,7 +73,7 @@ Plug 'Valloric/ListToggle'
 " Plug 'Shougo/deoplete.nvim'
 " Plug 'zchee/deoplete-jedi'
 if has("mac")
-  Plug 'Valloric/YouCompleteMe', { 'do': 'PATH=/usr/bin:$PATH ./install.py --clang-completer' }
+  Plug 'Valloric/YouCompleteMe', { 'do': 'MACOSX_DEPLOYMENT_TARGET=\"\" PATH=/usr/bin:$PATH ./install.py --clang-completer' }
 elseif has("unix")
   Plug 'Valloric/YouCompleteMe', { 'do': 'python2.7 install.py --clang-completer' }
 endif
@@ -445,6 +446,9 @@ vmap <Enter> <Plug>(EasyAlign)
 autocmd! BufWritePost *.py Neomake
 autocmd! BufWritePost *.js* Neomake
 autocmd! BufWritePost *.tex Neomake
+" let g:neomake_list_height = 2
+" let g:neomake_open_list = 2
+let g:neomake_verbose = 3
 " autocmd! BufWritePost *.md Neomake!
 let g:neomake_error_sign = {
     \ 'text': '✗',
