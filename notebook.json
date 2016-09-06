@@ -1,0 +1,6 @@
+{
+  "load_extensions": {
+    "toc2/main": true,
+    "jupyter-vim-binding/vim_binding": true
+  }
+}

@@ -1,0 +1,6 @@
+/* .jupyter/custom/custom.css */
+/* .container { width:100% !important; } */
+
+div.text_cell {  
+    max-width: 105ex; /* instead of 100%, */
+}
