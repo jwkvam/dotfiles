@@ -1,0 +1,5 @@
+# omnia provides convex optimization packages
+channels:
+  - conda-forge
+  - cvxgrp
+  - defaults
