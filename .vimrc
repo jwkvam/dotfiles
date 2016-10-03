@@ -336,8 +336,8 @@ set hidden
 set noro
 
 " remove trailing whitespace from python files
-autocmd BufWritePre *.py :%s/\s\+$//e
-autocmd BufWritePre *.tex :%s/\s\+$//e
+autocmd BufWritePre *.py,*.tex,*.js,*.md,*.html,*.css :%s/\s\+$//e
+autocmd BufWritePre *.hs,*.scss,*.rst,*.rb :%s/\s\+$//e
 
 " recall cursor position for file {{{
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -620,6 +620,7 @@ autocmd User ObliqueRepeat normal! zz
 " }}}
 " Airline {{{
 " let g:airline_theme='powerlineish'
+" let g:airline#extensions#neomake#enabled = 0
 let g:airline_theme='zenburn'
 " let g:airline_theme='base16'
 " let g:airline_theme='murrmur'
