@@ -31,6 +31,7 @@ Plug 'junegunn/vim-oblique'
 Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-peekaboo'
 Plug 'JuliaLang/julia-vim'
+" Plug 'haya14busa/incsearch.vim'
 " Plug 'lambdatoast/elm.vim'
 " Plug 'mxw/vim-jsx'
 " Plug 'othree/vajs.vim'
@@ -312,6 +313,7 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 " }}}
+nnoremap Y y$
 
 " {{{ Searching
 " nnoremap <silent> * :let stay_star_view = winsaveview()<cr>*:call winrestview(stay_star_view)<cr>:set hlsearch<cr>
@@ -600,6 +602,19 @@ let g:rainbow_active = 1
 " map / <Plug>(incsearch-forward)
 " map ? <Plug>(incsearch-backward)
 " map g/ <Plug>(incsearch-stay)
+" }}}
+" IncSearch {{{
+" :h g:incsearch#auto_nohlsearch
+" map /  <Plug>(incsearch-forward)
+" map ?  <Plug>(incsearch-backward)
+" map g/ <Plug>(incsearch-stay)
+" let g:incsearch#auto_nohlsearch = 1
+" map n  <Plug>(incsearch-nohl-n)
+" map N  <Plug>(incsearch-nohl-N)
+" map *  <Plug>(incsearch-hl-*)
+" map #  <Plug>(incsearch-nohl-#)
+" map g* <Plug>(incsearch-nohl-g*)
+" map g# <Plug>(incsearch-nohl-g#)
 " }}}
 " Oblique {{{
 function! s:flash()
