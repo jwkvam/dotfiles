@@ -27,8 +27,9 @@ Plug 'dyng/ctrlsf.vim'
 " Plug '~/dev/ctrlsf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-after-object'
-Plug 'junegunn/vim-oblique'
-Plug 'junegunn/vim-pseudocl'
+" Plug 'junegunn/vim-oblique'
+Plug 'junegunn/vim-slash'
+" Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-peekaboo'
 Plug 'JuliaLang/julia-vim'
 " Plug 'haya14busa/incsearch.vim'
@@ -616,7 +617,7 @@ let g:rainbow_active = 1
 " map g* <Plug>(incsearch-nohl-g*)
 " map g# <Plug>(incsearch-nohl-g#)
 " }}}
-" Oblique {{{
+" Oblique/Slash {{{
 function! s:flash()
   for _ in range(1, 3)
     set cursorline!
@@ -625,13 +626,17 @@ function! s:flash()
   endfor
   set cursorline!
 endfunction
-let g:oblique#incsearch_highlight_all = 1
-" let g:oblique#clear_highlight = 0
-autocmd! User ObliqueStar
-autocmd! User ObliqueRepeat
 
-autocmd User ObliqueStar   normal! zz
-autocmd User ObliqueRepeat normal! zz
+noremap <plug>(slash-after) zz
+" noremap <plug>(slash-after) <sid>flash()
+
+" let g:oblique#incsearch_highlight_all = 1
+" let g:oblique#clear_highlight = 0
+" autocmd! User ObliqueStar
+" autocmd! User ObliqueRepeat
+"
+" autocmd User ObliqueStar   normal! zz
+" autocmd User ObliqueRepeat normal! zz
 " }}}
 " Airline {{{
 " let g:airline_theme='powerlineish'
