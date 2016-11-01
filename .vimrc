@@ -46,6 +46,8 @@ Plug 'naddeoa/vim-visual-page-percent'
 
 Plug 'jreybert/vimagit'
 
+" Plug 'mhinz/vim-halo'
+
 if s:nvim
   Plug 'kassio/neoterm'
 endif
@@ -364,7 +366,7 @@ let mapleader = "\<space>"
 " toggle paste
 nmap <C-\> :set paste!<CR>
 
-nnoremap <Leader>uu :source ~/.vimrc<CR>
+nnoremap <Leader>uu :source ~/.config/nvim/init.vim<CR>
 
 nnoremap <leader>r :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap <leader>R :%s//
@@ -856,6 +858,9 @@ let test#strategy = 'neoterm'
 " }}}
 " {{{ diminactive
 highlight ColorColumn ctermbg=236 guibg=#334444
+" }}}
+" {{{
+" autocmd BufEnter * :call halo#run({'intervals': [200, 200, 200], 'shape': 'cross2halo1'})
 " }}}
 " Digraphs {{{
 " ±
