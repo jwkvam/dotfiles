@@ -147,6 +147,10 @@ Plug 'lervag/vimtex'
 
 call plug#end()
 
+if exists('&inccommand')
+    set inccommand=split
+endif
+
 if s:nvim && exists(':tnoremap')
     nnoremap <silent> <f4> :REPLSendLine<cr>
     vnoremap <silent> <f4> :REPLSendSelection<cr>
