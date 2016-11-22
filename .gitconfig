@@ -1,21 +1,29 @@
 [user]
-	name = Jacques Kvam
-	email = jwkvam@gmail.com
+    name = Jacques Kvam
+    email = jwkvam@gmail.com
 [color]
-	ui = auto
+    ui = auto
 [alias]
-	br = branch
-	ci = commit
-	co = checkout
-	cp = cherry-pick
-	di = diff
-	dic = diff --cached
-	fp = format-patch
-	lg = log -p
-	lst = log --stat
-	st = status -sb
+    br = branch
+    ci = commit
+    co = checkout
+    cp = cherry-pick
+    di = diff
+    dic = diff --cached
+    fp = format-patch
+    lg = log -p
+    lst = log --stat
+    st = status -sb
+    stu = status -sbu
 [diff]
-  tool = vimdiff
-  algorithm = patience
+    tool = vimdiff
+    algorithm = patience
 [push]
-  default = simple
+    default = simple
+[color "diff-highlight"]
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
+[core]
+    editor = nvim
