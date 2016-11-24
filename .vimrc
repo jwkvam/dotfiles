@@ -670,7 +670,9 @@ let g:airline#extensions#tabline#fnamecollapse = 1
 "
 let g:visualPagePercent_display_width=10
 " let g:airline_section_z = airline#section#create(['windowswap', '%{VisualPercent()}', 'linenr', ':%3v '])
-let g:airline_section_z = airline#section#create(['windowswap', '%{VisualPercent()}', 'linenr', ' %{ALEGetStatusLine()}'])
+let g:airline_section_z = airline#section#create(['windowswap', '%{VisualPercent()}', 'linenr'])
+let g:airline_section_warning = airline#section#create(['%{ALEGetStatusLine()}'])
+let g:airline_section_error = airline#section#create([''])
 let g:airline_mode_map = {
       \ '__' : '-',
       \ 'n'  : 'N',
@@ -948,7 +950,7 @@ nmap Q <Plug>(choosewin)
 let g:choosewin_overlay_enable = 1
 " }}}
 
-nnoremap <Leader>d :ll!<CR>
+nnoremap <Leader>d :ALENextWrap<CR>
 let g:lt_location_list_toggle_map = '<leader>o'
 let g:lt_quickfix_list_toggle_map = '<leader>q'
 
