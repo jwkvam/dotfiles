@@ -92,7 +92,8 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'Raimondi/delimitMate'
 
 " Plug 'benekastah/neomake', {'commit': '5888211'}
-Plug 'benekastah/neomake'
+" Plug 'benekastah/neomake'
+Plug 'w0rp/ale'
 Plug 'luochen1990/rainbow'
 " Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'wellle/targets.vim'
@@ -451,10 +452,18 @@ let g:EasyMotion_smartcase = 1
 vmap <Enter> <Plug>(EasyAlign)
 " nmap <Leader>a <Plug>(EasyAlign)
 " }}}
+" ALE {{{
+let g:ale_linters = {
+            \   'python': ['pylint'],
+            \}
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠'
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+" }}}
 " Neomake {{{
-autocmd! BufWritePost *.py Neomake
-autocmd! BufWritePost *.js* Neomake
-autocmd! BufWritePost *.tex Neomake
+" autocmd! BufWritePost *.py Neomake
+" autocmd! BufWritePost *.js* Neomake
+" autocmd! BufWritePost *.tex Neomake
 " let g:neomake_list_height = 2
 " let g:neomake_open_list = 2
 let g:neomake_verbose = 3
@@ -660,7 +669,8 @@ let g:airline#extensions#tabline#fnamecollapse = 1
 " let g:airline_section_z = airline#section#create(['windowswap', '%3p%%'.spc, 'linenr', ':%3v '])
 "
 let g:visualPagePercent_display_width=10
-let g:airline_section_z = airline#section#create(['windowswap', '%{VisualPercent()}', 'linenr', ':%3v '])
+" let g:airline_section_z = airline#section#create(['windowswap', '%{VisualPercent()}', 'linenr', ':%3v '])
+let g:airline_section_z = airline#section#create(['windowswap', '%{VisualPercent()}', 'linenr', ' %{ALEGetStatusLine()}'])
 let g:airline_mode_map = {
       \ '__' : '-',
       \ 'n'  : 'N',
