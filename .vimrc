@@ -528,6 +528,7 @@ let g:neomake_latex_enabled_makers = ['lacheck', 'chktex']
 
 function! s:find_git_root()
   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+  " return system('fzf-file-widget')
 endfunction
 
 command! ProjectFiles execute 'Files' s:find_git_root()
@@ -669,8 +670,7 @@ let g:airline#extensions#tabline#fnamecollapse = 1
 " let g:airline_section_z = airline#section#create(['windowswap', '%3p%%'.spc, 'linenr', ':%3v '])
 "
 let g:visualPagePercent_display_width=10
-" let g:airline_section_z = airline#section#create(['windowswap', '%{VisualPercent()}', 'linenr', ':%3v '])
-let g:airline_section_z = airline#section#create(['windowswap', '%{VisualPercent()}', 'linenr'])
+let g:airline_section_z = airline#section#create(['windowswap', '%{VisualPercent()}', 'linenr', ':%3v'])
 let g:airline_section_warning = airline#section#create(['%{ALEGetStatusLine()}'])
 let g:airline_section_error = airline#section#create([''])
 let g:airline_mode_map = {
