@@ -526,7 +526,7 @@ let g:neomake_latex_enabled_makers = ['lacheck', 'chktex']
 " noremap <silent> <C-p> :call fzf#run()<CR>
 " Open files in horizontal split
 " 
-let g:fzf_files_options = '--preview "highlight -O ansi {} | head -'.&lines.'"'
+let g:fzf_files_options = '--preview "highlight --failsafe -O ansi {} 2> /dev/null | head -'.&lines.'"'
 
 function! s:find_git_root()
   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
