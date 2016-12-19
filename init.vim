@@ -10,7 +10,9 @@
 
 let g:python_host_prog='/usr/bin/python2.7'
 let g:python2_host_prog='/usr/bin/python2.7'
-let g:python3_host_prog='/Users/jacques/miniconda/bin/python3'
+if filereadable($HOME.'/miniconda/bin/python3')
+    let g:python3_host_prog=$HOME.'/miniconda/bin/python3'
+endif
 let g:ycm_path_to_python_interpreter='/usr/bin/python2.7'
 let g:ycm_python_binary_path='/usr/bin/python2.7'
 " let g:ycm_python_binary_path='/Users/jacques/miniconda/bin/python'
@@ -38,6 +40,7 @@ Plug 'JuliaLang/julia-vim'
 " Plug 'othree/vajs.vim'
 " Plug 'othree/vajs.vim'
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 Plug 'uarun/vim-protobuf'
 Plug '~/.config/nvim/kite'
 
@@ -266,6 +269,8 @@ inoremap <c-l> <Esc>viwUea
 " filetype indent on
 
 " autocmd FileType startify setlocal fdm=manual
+" 
+" inoremap <Enter> <Esc>
 
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.tex setlocal spell
@@ -459,6 +464,16 @@ let g:ale_linters = {
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 1
+" You can disable this option too
+" if you don't want linters to run on opening a file
+let g:ale_lint_on_enter = 1
+
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
 " }}}
 " Neomake {{{
 " autocmd! BufWritePost *.py Neomake
@@ -863,6 +878,9 @@ let g:SignatureDeferPlacement=0
 
 " Now everytime Signature wants to place a sign, it calls this function and thus, we can dynamically assign a Highlight group g:SignatureMarkTextHL
 " The advantage of doing it this way is that this decouples Signature from git-gutter. Both can remain unaware of the other.
+
+" }}}
+" {{{ startify
 
 " }}}
 " {{{
