@@ -33,7 +33,7 @@ Plug 'junegunn/vim-after-object'
 Plug 'junegunn/vim-slash'
 " Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-peekaboo'
-Plug 'JuliaLang/julia-vim'
+Plug 'JuliaEditorSupport/julia-vim'
 " Plug 'haya14busa/incsearch.vim'
 " Plug 'lambdatoast/elm.vim'
 " Plug 'mxw/vim-jsx'
@@ -727,11 +727,11 @@ let g:undotree_WindowLayout=2
 " inoremap <C-Tab> <Plug>delimitMateJumpMany
 " inoremap <C-\> @<Plug>delimitMateJumpMany
 " imap <silent> <buffer> <C-\> <Plug>delimitMateJumpMany
+
 imap <silent> <buffer> ¡ <Plug>delimitMateS-BS
 " imap <C-\> <S-BS>
 imap <silent> <buffer> £ <Plug>delimitMateJumpMany
 imap <silent> <buffer> ¢ <Plug>delimitMateJumpMany
-
 
 " imap <silent> <buffer> <S-F2> <Plug>delimitMateS-BS
 " imap <silent> <buffer> <S-F1> <Plug>delimitMateS-BS
