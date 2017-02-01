@@ -49,6 +49,8 @@ Plug 'naddeoa/vim-visual-page-percent'
 
 Plug 'jreybert/vimagit'
 
+Plug 'sbdchd/neoformat'
+
 " Plug 'mhinz/vim-halo'
 
 if s:nvim
@@ -97,8 +99,8 @@ Plug 'Raimondi/delimitMate'
 " Plug 'benekastah/neomake', {'commit': '5888211'}
 " Plug 'benekastah/neomake'
 Plug 'w0rp/ale'
-Plug 'luochen1990/rainbow'
-" Plug 'junegunn/rainbow_parentheses.vim'
+" Plug 'luochen1990/rainbow'
+Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'wellle/targets.vim'
 
 Plug 'tomtom/tcomment_vim'
@@ -630,6 +632,10 @@ vmap <Leader>s <Plug>CtrlSFVwordExec
 
 " }}}
 " Rainbow Parentheses {{{
+augroup rainbow_files
+    autocmd!
+    autocmd FileType lisp,python,julia RainbowParentheses
+augroup END
 let g:rainbow_active = 1
 " }}}
 " Incremental Search {{{
