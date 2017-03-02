@@ -42,7 +42,7 @@ Plug 'JuliaEditorSupport/julia-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'uarun/vim-protobuf'
-Plug '~/.config/nvim/kite'
+" Plug '~/.config/nvim/kite'
 
 Plug 'hecal3/vim-leader-guide'
 Plug 'naddeoa/vim-visual-page-percent'
