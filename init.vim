@@ -267,6 +267,10 @@ inoremap <C-c> <Esc>
 inoremap ;u <Esc>viwUea
 inoremap <c-l> <Esc>viwUea
 
+" :w!! 
+" write the file when you accidentally opened it without the right (root) privileges
+cmap w!! w !sudo tee % > /dev/null
+
 " filetype plugin on
 " filetype indent on
 
