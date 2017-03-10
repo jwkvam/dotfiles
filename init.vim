@@ -242,6 +242,11 @@ set nostartofline
 set formatoptions=cqrt
 " }}}
 
+
+set mouse=a
+map <ScrollWheelUp> <C-u>
+map <ScrollWheelDown> <C-d>
+
 set ssop=blank,buffers,curdir,folds,help,options,tabpages,winsize
 
 let python_highlight_all=1
@@ -472,7 +477,7 @@ let g:ale_sign_warning = '⚠'
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 
 let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 1
+let g:ale_lint_on_text_changed = 0
 " You can disable this option too
 " if you don't want linters to run on opening a file
 let g:ale_lint_on_enter = 1
