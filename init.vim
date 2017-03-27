@@ -439,12 +439,6 @@ augroup END
 
 set tags=tags;
 
-" Ag.vim {{{
-"
-let g:agprg = 'ag --smart-case --nogroup --nocolor --column'
-" nnoremap <Leader>a :Ag!<space>
-
-" }}}
 " easy motion {{{
 
 " nmap s <Plug>(easymotion-s2)
@@ -601,7 +595,7 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " }}}
 " {{{ ctrlsf
 " nnoremap <Leader>s :CtrlSFOpen<CR>
-let g:ctrlsf_ackprg='ag'
+let g:ctrlsf_ackprg='rg'
 nmap <Leader>s <Plug>CtrlSFCwordPath
 vmap <Leader>s <Plug>CtrlSFVwordExec
 " nnoremap <C-F>n <Plug>(CtrlSFPrompt)
