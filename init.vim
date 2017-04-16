@@ -64,7 +64,8 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'janko-m/vim-test'
 
-Plug 'kballard/vim-fish'
+" Plug 'kballard/vim-fish'
+Plug 'wilriker/vim-fish'
 
 " Plug 'luochen1990/indent-detector.vim'
 
