@@ -27,3 +27,10 @@
     newHighlight = green bold 22
 [core]
     editor = nvim
+[filter "lfs"]
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+[diff "jupyternotebook"]
+    command = git-nbdiffdriver diff
