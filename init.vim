@@ -253,15 +253,12 @@ set ssop=blank,buffers,curdir,folds,help,options,tabpages,winsize
 let python_highlight_all=1
 
 " Colorscheme {{{
-" set t_Co=256
-" let g:zenburn_high_Contrast=1
-" colorscheme zenburn
+set background=dark
+" autocmd ColorScheme janah highlight Normal ctermbg=230
 " colorscheme janah
 colorscheme seoul256
-" colorscheme gruvbox
 " hi search ctermbg=223 ctermfg=238
 " hi incsearch ctermbg=216 ctermfg=242
-set background=dark
 " }}}
 
 " swap i_CTRL-C and i_CTRL-[
@@ -331,12 +328,12 @@ set equalalways
 " set lazyredraw
 
 " {{{ clipboard paste
-vmap <Leader>y "+y
-vmap <Leader>d "+d
-nmap <Leader>p "+p
-nmap <Leader>P "+P
-vmap <Leader>p "+p
-vmap <Leader>P "+P
+vnoremap <Leader>y "+y
+vnoremap <Leader>d "+d
+nnoremap <Leader>p "+p
+nnoremap <Leader>P "+P
+vnoremap <Leader>p "+p
+vnoremap <Leader>P "+P
 " }}}
 nnoremap Y y$
 
@@ -893,7 +890,7 @@ let g:SignatureDeferPlacement=0
 " {{{ startify
 
 " }}}
-" {{{
+" {{{ leader-guide
 let g:lmap = {}
 call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
 nnoremap <silent> <leader> :LeaderGuide '<Space>'<CR>
@@ -980,7 +977,6 @@ nmap Q <Plug>(choosewin)
 let g:choosewin_overlay_enable = 1
 " }}}
 
-nnoremap <Leader>d :ALENextWrap<CR>
 let g:lt_location_list_toggle_map = '<leader>o'
 let g:lt_quickfix_list_toggle_map = '<leader>q'
 
