@@ -39,6 +39,7 @@ Plug 'JuliaEditorSupport/julia-vim'
 " Plug 'mxw/vim-jsx'
 " Plug 'othree/vajs.vim'
 " Plug 'othree/vajs.vim'
+Plug 'matze/vim-move'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'uarun/vim-protobuf'
@@ -785,7 +786,7 @@ let g:ycm_filetype_blacklist = {
         \}
 " }}}
 " ultisnips {{{
-let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsExpandTrigger="<c-l>"
 " let g:UltiSnipsExpandTrigger="<Tab>"
 let g:UltiSnipsJumpForwardTrigger="<Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
@@ -898,6 +899,9 @@ vnoremap <silent> <leader> :LeaderGuideVisual '<Space>'<CR>
 " }}}
 " {{{ vim-test
 let test#strategy = 'neoterm'
+" {{{ vim-move
+let g:move_key_modifier = 'C'
+" }}}
 " }}}
 " {{{ diminactive
 highlight ColorColumn ctermbg=236 guibg=#334444
