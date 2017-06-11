@@ -23,6 +23,7 @@ let s:nvim = has('nvim')
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'unblevable/quick-scope'
 " Plug 'justinmk/vim-dirvish'
 Plug 'dyng/ctrlsf.vim'
 " Plug 'jwkvam/ctrlsf.vim'
@@ -397,8 +398,8 @@ vnoremap <leader><C-r> "vy:%s/<C-r>v//g<Left><Left>
 " onoremap <Tab> <C-C>za
 " vnoremap <Tab> zf
 
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
+" nnoremap <C-J> <C-W><C-J>
+" nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 " this is really <c-h> but mapped to some weird unicode
@@ -450,7 +451,7 @@ map <Leader>w <Plug>(easymotion-bd-w)
 map <Leader>e <Plug>(easymotion-bd-e)
 map <Leader>b <Plug>(easymotion-b)
 " map <Leader>r <Plug>(easymotion-jumptoanywhere)
-nmap t <Plug>(easymotion-t2)
+nmap t <Plug>(easymotion-bd-t2)
 
 let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 let g:EasyMotion_do_mapping = 0
@@ -478,64 +479,6 @@ let g:ale_lint_on_enter = 1
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
-" }}}
-" Neomake {{{
-" autocmd! BufWritePost *.py Neomake
-" autocmd! BufWritePost *.js* Neomake
-" autocmd! BufWritePost *.tex Neomake
-" let g:neomake_list_height = 2
-" let g:neomake_open_list = 2
-let g:neomake_verbose = 3
-" autocmd! BufWritePost *.md Neomake!
-let g:neomake_error_sign = {
-    \ 'text': '✗',
-    \ 'texthl': 'ErrorMsg'
-    \ }
-let g:neomake_warning_sign = {
-    \ 'text': '⚠',
-    \ 'texthl': 'WarningMsg'
-    \ }
-
-function Pylinterrors(entry)
-    if a:entry.type ==# 'F'  " Fatal error which prevented further processing
-        let type = 'E'
-    elseif a:entry.type ==# 'E'  " Error for important programming issues
-        let type = 'E'
-    elseif a:entry.type ==# 'W'  " Warning for stylistic or minor programming issues
-        let type = 'W'
-    elseif a:entry.type ==# 'R'  " Refactor suggestion
-        let type = 'W'
-    elseif a:entry.type ==# 'C'  " Convention violation
-        let type = 'W'
-    else
-        let type = ''
-    endif
-    let a:entry.type = type
-endfunction
-
-let g:neomake_python_pylint_maker = {
-            \ 'args': [
-            \ '-f', 'text',
-            \ '--msg-template="{path}:{line}:{column}:{C}: [{symbol}] {msg}"',
-            \ '-r', 'n'
-        \ ],
-        \ 'errorformat':
-            \ '%A%f:%l:%c:%t: %m,' .
-            \ '%A%f:%l: %m,' .
-            \ '%A%f:(%l): %m,' .
-            \ '%-Z%p^%.%#,' .
-            \ '%-G%.%#',
-            \ 'postprocess': function('Pylinterrors')
-            \ }
-            " \ '--load-plugins', 'pylint_django'
-
-let g:neomake_verbose = 0
-let g:neomake_python_enabled_makers = ['pylint']
-let g:neomake_javascript_enabled_makers = ['eslint']
-" let g:neomake_python_enabled_makers = ['pep8']
-let g:neomake_sh_enabled_makers = ['shellcheck']
-let g:neomake_markdown_enabled_makers = ['make']
-let g:neomake_latex_enabled_makers = ['lacheck', 'chktex']
 " }}}
 " FZF {{{ =============================================================================
 " Set the following env variable to get nice file filtering
