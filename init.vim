@@ -536,6 +536,7 @@ vmap <C-v> <Plug>(expand_region_shrink)
 let g:ctrlsf_ackprg='rg'
 nmap <Leader>s <Plug>CtrlSFCwordPath
 vmap <Leader>s <Plug>CtrlSFVwordExec
+let g:ctrlsf_confirm_save=0
 " nnoremap <C-F>n <Plug>(CtrlSFPrompt)
 " xnoremap <C-F>f <Plug>(CtrlSFVwordExec)
 " }}}
@@ -843,6 +844,14 @@ let g:move_key_modifier = 'C'
 " }}}
 " {{{ diminactive
 highlight ColorColumn ctermbg=236 guibg=#334444
+" }}}
+" {{{ pytest
+" Pytest
+nmap <silent><Leader>tf <Esc>:Pytest file<CR>
+nmap <silent><Leader>tc <Esc>:Pytest class<CR>
+nmap <silent><Leader>tm <Esc>:Pytest function verbose<CR>
+nmap <silent><Leader>ts <Esc>:Pytest session<CR>
+nmap <silent><Leader>te <Esc>:Pytest fails<CR>
 " }}}
 " {{{
 " autocmd BufEnter * :call halo#run({'intervals': [200, 200, 200], 'shape': 'cross2halo1'})
