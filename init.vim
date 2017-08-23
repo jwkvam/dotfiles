@@ -1,7 +1,3 @@
-" let $VIM = $HOME/.config/nvim
-" let $SHELL = /bin/bash
-"
-
 " let g:python_host_prog='/Users/jacques/miniconda/bin/python'
 " let g:python3_host_prog='/Users/jacques/miniconda/envs/py35/bin/python3'
 " let g:ycm_path_to_python_interpreter='/Users/jacques/miniconda/bin/python'
@@ -24,10 +20,7 @@ let s:nvim = has('nvim')
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'unblevable/quick-scope'
-" Plug 'justinmk/vim-dirvish'
 Plug 'dyng/ctrlsf.vim'
-" Plug 'jwkvam/ctrlsf.vim'
-" Plug '~/dev/ctrlsf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-after-object'
 " Plug 'junegunn/vim-oblique'
@@ -35,6 +28,7 @@ Plug 'junegunn/vim-slash'
 " Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-peekaboo'
 Plug 'JuliaEditorSupport/julia-vim'
+Plug 'farmergreg/vim-lastplace'
 " Plug 'haya14busa/incsearch.vim'
 " Plug 'lambdatoast/elm.vim'
 " Plug 'mxw/vim-jsx'
@@ -44,6 +38,7 @@ Plug 'matze/vim-move'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'uarun/vim-protobuf'
+Plug 'alfredodeza/pytest.vim'
 " Plug '~/.config/nvim/kite'
 
 Plug 'hecal3/vim-leader-guide'
@@ -114,6 +109,7 @@ Plug 'mbbill/undotree'
 Plug 'MarcWeber/vim-addon-local-vimrc'
 Plug 'MarcWeber/vim-addon-mw-utils'
 
+" Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug 'itchyny/lightline.vim'
@@ -365,10 +361,10 @@ set noro
 autocmd BufWritePre *.py,*.tex,*.js,*.md,*.html,*.css :%s/\s\+$//e
 autocmd BufWritePre *.hs,*.scss,*.rst,*.rb :%s/\s\+$//e
 
-" recall cursor position for file {{{
-au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
-      \ exe "normal g'\"" | endif
-" }}}
+" " recall cursor position for file {{{
+" au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
+"       \ exe "normal g'\"" | endif
+" " }}}
 
 " Files to ignore {{{
 set wildignore=*.o,*.out,*.bak,*.log
@@ -712,12 +708,11 @@ let g:ycm_complete_in_comments = 1
 let g:ycm_min_num_of_chars_for_completion = 2
 let g:ycm_server_log_level = 'info'
 
-set completeopt=menuone
-let g:ycm_add_preview_to_completeopt = 0
+set completeopt=menuone,preview
+"let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 0
 let g:ycm_seed_identifiers_with_syntax = 1
-
 
 let g:ycm_filetype_blacklist = {
         \ 'tagbar' : 1,
