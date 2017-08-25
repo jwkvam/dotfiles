@@ -39,7 +39,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'uarun/vim-protobuf'
 Plug 'alfredodeza/pytest.vim'
-" Plug '~/.config/nvim/kite'
 
 Plug 'hecal3/vim-leader-guide'
 Plug 'naddeoa/vim-visual-page-percent'
@@ -47,8 +46,6 @@ Plug 'naddeoa/vim-visual-page-percent'
 Plug 'jreybert/vimagit'
 
 Plug 'sbdchd/neoformat'
-
-" Plug 'mhinz/vim-halo'
 
 if s:nvim
   Plug 'kassio/neoterm'
@@ -849,7 +846,7 @@ highlight ColorColumn ctermbg=236 guibg=#334444
 " Pytest
 nmap <silent><Leader>tf <Esc>:Pytest file<CR>
 nmap <silent><Leader>tc <Esc>:Pytest class<CR>
-nmap <silent><Leader>tm <Esc>:Pytest function verbose<CR>
+nmap <silent><Leader>tm <Esc>:Pytest function -s<CR>
 nmap <silent><Leader>ts <Esc>:Pytest session<CR>
 nmap <silent><Leader>te <Esc>:Pytest fails<CR>
 " }}}
