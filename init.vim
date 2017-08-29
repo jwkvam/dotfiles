@@ -39,6 +39,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'uarun/vim-protobuf'
 Plug 'alfredodeza/pytest.vim'
+Plug 'abaldwin88/roamer.vim'
 
 Plug 'hecal3/vim-leader-guide'
 Plug 'naddeoa/vim-visual-page-percent'
