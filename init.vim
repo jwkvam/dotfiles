@@ -1,3 +1,4 @@
+scriptencoding utf-8
 " let g:python_host_prog='/Users/jacques/miniconda/bin/python'
 " let g:python3_host_prog='/Users/jacques/miniconda/envs/py35/bin/python3'
 " let g:ycm_path_to_python_interpreter='/Users/jacques/miniconda/bin/python'
@@ -29,6 +30,7 @@ Plug 'junegunn/vim-slash'
 Plug 'junegunn/vim-peekaboo'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'farmergreg/vim-lastplace'
+" Plug 'mtth/cursorcross.vim'
 " Plug 'haya14busa/incsearch.vim'
 " Plug 'lambdatoast/elm.vim'
 " Plug 'mxw/vim-jsx'
@@ -77,9 +79,9 @@ Plug 'Valloric/ListToggle'
 
 " Plug 'Shougo/deoplete.nvim'
 " Plug 'zchee/deoplete-jedi'
-if has("mac")
+if has('mac')
   Plug 'Valloric/YouCompleteMe', { 'do': 'MACOSX_DEPLOYMENT_TARGET=\"\" PATH=/usr/bin:$PATH ./install.py --clang-completer' }
-elseif has("unix")
+elseif has('unix')
   Plug 'Valloric/YouCompleteMe', { 'do': 'python2.7 install.py --clang-completer' }
 endif
 
@@ -244,9 +246,9 @@ set mouse=a
 map <ScrollWheelUp> <C-u>
 map <ScrollWheelDown> <C-d>
 
-set ssop=blank,buffers,curdir,folds,help,options,tabpages,winsize
+set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize
 
-let python_highlight_all=1
+let g:python_highlight_all=1
 
 " Colorscheme {{{
 set background=dark
@@ -300,13 +302,13 @@ set directory=~/.vim/tmp/swap//   " swap files
 
 " Make those folders automatically if they don't already exist.
 if !isdirectory(expand(&undodir))
-    call mkdir(expand(&undodir), "p")
+    call mkdir(expand(&undodir), 'p')
 endif
 if !isdirectory(expand(&backupdir))
-    call mkdir(expand(&backupdir), "p")
+    call mkdir(expand(&backupdir), 'p')
 endif
 if !isdirectory(expand(&directory))
-    call mkdir(expand(&directory), "p")
+    call mkdir(expand(&directory), 'p')
 endif
 " }}}
 
@@ -315,6 +317,7 @@ set sidescroll=5
 set showcmd
 set showmatch
 set cursorline
+set cursorcolumn
 set matchtime=1
 set equalalways
 " Not sure why I had this here
@@ -353,11 +356,13 @@ set foldlevelstart=1
 set foldnestmax=20
 set hidden
 
-set noro
+set noreadonly
 
 " remove trailing whitespace from python files
-autocmd BufWritePre *.py,*.tex,*.js,*.md,*.html,*.css :%s/\s\+$//e
-autocmd BufWritePre *.hs,*.scss,*.rst,*.rb :%s/\s\+$//e
+augroup whitespace
+    autocmd BufWritePre *.py,*.tex,*.js,*.md,*.html,*.css :%s/\s\+$//e
+    autocmd BufWritePre *.hs,*.scss,*.rst,*.rb :%s/\s\+$//e
+augroup END
 
 " " recall cursor position for file {{{
 " au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -376,7 +381,7 @@ set wildignore+=.git
 set wildignore+=*.aux,*.fls,*.out,*.pdf,*.fdb_latexmk,*.blg,*.bbl
 " }}}
 
-let mapleader = "\<space>"
+let g:mapleader = "\<space>"
 
 " toggle paste
 nmap <C-\> :set paste!<CR>
@@ -459,6 +464,7 @@ vmap <Enter> <Plug>(EasyAlign)
 " ALE {{{
 let g:ale_linters = {
             \   'python': ['pylint'],
+            \   'vim': ['vint'],
             \}
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
@@ -598,7 +604,7 @@ let g:rainbow_active = 1
 " }}}
 " Oblique/Slash {{{
 function! s:flash()
-  for _ in range(1, 3)
+  for l:i in range(1, 3)
     set cursorline!
     redraw
     sleep 20m
@@ -723,11 +729,11 @@ let g:ycm_filetype_blacklist = {
         \}
 " }}}
 " ultisnips {{{
-let g:UltiSnipsExpandTrigger="<c-l>"
-" let g:UltiSnipsExpandTrigger="<Tab>"
-let g:UltiSnipsJumpForwardTrigger="<Tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
-let g:ultisnips_python_style="numpy"
+let g:UltiSnipsExpandTrigger='<c-l>'
+" let g:UltiSnipsExpandTrigger='<Tab>'
+let g:UltiSnipsJumpForwardTrigger='<Tab>'
+let g:UltiSnipsJumpBackwardTrigger='<S-Tab>'
+let g:ultisnips_python_style='numpy'
 
 " https://github.com/Valloric/YouCompleteMe/issues/36
 " Enable tabbing through list of results
@@ -743,10 +749,12 @@ function! g:UltiSnips_Complete()
             endif
         endif
     endif
-    return ""
+    return ''
 endfunction
 
-au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+augroup snipsexpand
+    au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+augroup END
 
 " Expand snippet or return
 let g:ulti_expand_res = 0
@@ -756,6 +764,7 @@ function! Ulti_ExpandOrEnter()
         return ''
     else
         return "\<return>"
+    endif
 endfunction
 
 " Set <space> as primary trigger
@@ -780,7 +789,9 @@ nnoremap  <Space><Space>hs     <Plug>GitGutterStageHunk
 " nmap  <silent> w <Plug>(show-motion-both-w)
 " }}}
 " vim-after-object {{{
-autocmd VimEnter * call after_object#enable('=', '#')
+augroup vimafterobject
+    autocmd VimEnter * call after_object#enable('=', '#')
+augroup END
 " }}}
 " vim-operator-surround {{{
 
@@ -830,24 +841,31 @@ let g:SignatureDeferPlacement=0
 " }}}
 " {{{ leader-guide
 let g:lmap = {}
-call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
+call leaderGuide#register_prefix_descriptions('<Space>', 'g:lmap')
 nnoremap <silent> <leader> :LeaderGuide '<Space>'<CR>
 vnoremap <silent> <leader> :LeaderGuideVisual '<Space>'<CR>
 " }}}
 " {{{ vim-test
-let test#strategy = 'neoterm'
+let g:test#strategy = 'neoterm'
 " {{{ vim-move
 let g:move_key_modifier = 'C'
 " }}}
+" {{{ cursorcross
+" let g:cursorcross_dynamic = 'clw'
 " }}}
 " {{{ diminactive
-highlight ColorColumn ctermbg=236 guibg=#334444
+" highlight ColorColumn ctermbg=235 guibg=#334444
+highlight ColorColumn ctermbg=235 guibg=#1e2828
+" highlight ColorColumn ctermbg=0 guibg=#004444
+" highlight ColorColumn ctermbg=255 guibg=#a9a9a9
+" let g:diminactive_use_syntax = 1
 " }}}
 " {{{ pytest
 " Pytest
 nmap <silent><Leader>tf <Esc>:Pytest file<CR>
 nmap <silent><Leader>tc <Esc>:Pytest class<CR>
 nmap <silent><Leader>tm <Esc>:Pytest function -s<CR>
+nmap <silent><Leader>td <Esc>:Pytest function --pdb<CR>
 nmap <silent><Leader>ts <Esc>:Pytest session<CR>
 nmap <silent><Leader>te <Esc>:Pytest fails<CR>
 " }}}
@@ -903,14 +921,14 @@ function! s:gn_next()
           \ silent! call repeat#set(v:operator . "\<Plug>(gn-next)" . (v:operator == 'c' ? "\<c-a>\<esc>" : '')) |
           \ normal! n
   augroup END
-  return "\<esc>:let &hlsearch=&hlsearch\<cr>" . v:operator . "gn"
+  return '\<esc>:let &hlsearch=&hlsearch\<cr>' . v:operator . 'gn'
 endfunction
 
 function! s:match_visual()
-  let reg = @@
+  let l:reg = @@
   normal! gvy
   let @/ = '\V' . escape(@@, '\')
-  let @@ = reg
+  let @@ = l:reg
 endfunction
 
 onoremap <expr> <Plug>(gn-next) <SID>gn_next()
