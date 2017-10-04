@@ -27,7 +27,11 @@ Plug 'junegunn/vim-after-object'
 " Plug 'junegunn/vim-oblique'
 Plug 'junegunn/vim-slash'
 " Plug 'junegunn/vim-pseudocl'
+
+" Peekaboo extends " and @ in normal mode and <CTRL-R> in insert mode so you
+" can see the contents of the registers.
 Plug 'junegunn/vim-peekaboo'
+
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'farmergreg/vim-lastplace'
 " Plug 'mtth/cursorcross.vim'
@@ -61,7 +65,7 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'janko-m/vim-test'
 
-" Plug 'kballard/vim-fish'
+" maintained vim-fish fork
 Plug 'wilriker/vim-fish'
 
 " Plug 'luochen1990/indent-detector.vim'
@@ -69,9 +73,9 @@ Plug 'wilriker/vim-fish'
 Plug 'vim-scripts/diffchar.vim'
 
 " {{{ Color Plugins
-Plug 'jnurmine/Zenburn'
-Plug 'morhetz/gruvbox'
-Plug 'mhinz/vim-janah'
+" Plug 'jnurmine/Zenburn'
+" Plug 'morhetz/gruvbox'
+" Plug 'mhinz/vim-janah'
 Plug 'junegunn/seoul256.vim'
 " }}}
 
@@ -85,18 +89,18 @@ elseif has('unix')
   Plug 'Valloric/YouCompleteMe', { 'do': 'python2.7 install.py --clang-completer' }
 endif
 
-Plug 'hdima/python-syntax'
+" This is an enhanced version of the original Vim 6.1 Python syntax
+" highlighting python.vim
+Plug 'vim-python/python-syntax'
+
 Plug 'SirVer/ultisnips'
 
 " Plug 'boucherm/ShowMotion'
 Plug 'tmhedberg/SimpylFold'
-" Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'nixprime/cpsm', { 'do': 'PATH=/usr/bin:$PATH ./install.sh' }
 Plug 'Raimondi/delimitMate'
 
-" Plug 'benekastah/neomake', {'commit': '5888211'}
-" Plug 'benekastah/neomake'
 Plug 'w0rp/ale'
+
 " Plug 'luochen1990/rainbow'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'wellle/targets.vim'
@@ -104,10 +108,10 @@ Plug 'wellle/targets.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'tomtom/tlib_vim'
 
-Plug 'mbbill/undotree'
+" Plug 'mbbill/undotree'
 
-Plug 'MarcWeber/vim-addon-local-vimrc'
-Plug 'MarcWeber/vim-addon-mw-utils'
+" Plug 'MarcWeber/vim-addon-local-vimrc'
+" Plug 'MarcWeber/vim-addon-mw-utils'
 
 " Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline'
@@ -144,9 +148,9 @@ Plug 'kana/vim-operator-user'
 Plug 'kana/vim-textobj-user'
 
 Plug 'blueyed/vim-diminactive'
-Plug 't9md/vim-choosewin'
+" Plug 't9md/vim-choosewin'
 
-Plug 'lervag/vimtex'
+" Plug 'lervag/vimtex'
 " Plug 'bfredl/nvim-ipy'
 " Plug '~/.vim/custom/dim_inactive'
 
@@ -218,6 +222,7 @@ vnoremap v <C-V>
 vnoremap <C-V> v
 
 set shell=/bin/bash
+set noshowmode
 set scrolloff=1
 set history=10000
 set termguicolors
@@ -230,7 +235,6 @@ set shiftwidth=4
 set tabstop=4
 set expandtab
 set softtabstop=4
-set showmode
 set backspace=indent,eol,start
 set listchars=tab:▸\ ,extends:❯,precedes:❮
 set list
@@ -250,6 +254,16 @@ set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize
 
 let g:python_highlight_all=1
 
+" let &t_ut=''
+" if has('gui_running') || has('nvim') 
+"     hi Normal 		guifg=#f6f3e8 guibg=#242424 
+" else
+"     " Set the terminal default background and foreground colors, thereby
+"     " improving performance by not needing to set these colors on empty cells.
+"     hi Normal guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE
+"     let &t_ti = &t_ti . "\033]10;#f6f3e8\007\033]11;#242424\007"
+"     let &t_te = &t_te . "\033]110\007\033]111\007"
+" endif
 " Colorscheme {{{
 set background=dark
 " autocmd ColorScheme janah highlight Normal ctermbg=230
@@ -317,7 +331,7 @@ set sidescroll=5
 set showcmd
 set showmatch
 set cursorline
-set cursorcolumn
+" set cursorcolumn
 set matchtime=1
 set equalalways
 " Not sure why I had this here
@@ -450,7 +464,7 @@ map <Leader>w <Plug>(easymotion-bd-w)
 map <Leader>e <Plug>(easymotion-bd-e)
 map <Leader>b <Plug>(easymotion-b)
 " map <Leader>r <Plug>(easymotion-jumptoanywhere)
-nmap t <Plug>(easymotion-bd-t2)
+" nmap t <Plug>(easymotion-bd-t2)
 
 let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 let g:EasyMotion_do_mapping = 0
@@ -639,7 +653,7 @@ let g:airline#extensions#tabline#fnamecollapse = 1
 " let g:airline_section_z = airline#section#create(['windowswap', '%3p%%'.spc, 'linenr', ':%3v '])
 "
 let g:visualPagePercent_display_width=10
-let g:airline_section_z = airline#section#create(['windowswap', '%{VisualPercent()}', 'linenr', ':%3v'])
+" let g:airline_section_z = airline#section#create(['windowswap', '%{VisualPercent()}', 'linenr', ':%3v'])
 let g:airline_section_warning = airline#section#create(['%{ALEGetStatusLine()}'])
 let g:airline_section_error = airline#section#create([''])
 let g:airline_mode_map = {
