@@ -91,7 +91,7 @@ endif
 
 " This is an enhanced version of the original Vim 6.1 Python syntax
 " highlighting python.vim
-Plug 'vim-python/python-syntax'
+" Plug 'vim-python/python-syntax'
 
 Plug 'SirVer/ultisnips'
 
@@ -123,8 +123,11 @@ Plug 'easymotion/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'rhysd/vim-operator-surround'
-Plug 'rhysd/vim-textobj-anyblock'
+
+" Plug 'rhysd/vim-operator-surround'
+" Plug 'rhysd/vim-textobj-anyblock'
+
+Plug 'machakann/vim-sandwich'
 
 Plug 'osyo-manga/vim-over'
 Plug 'vim-pandoc/vim-pandoc'
@@ -252,7 +255,7 @@ map <ScrollWheelDown> <C-d>
 
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize
 
-let g:python_highlight_all=1
+" let g:python_highlight_all=1
 
 " let &t_ut=''
 " if has('gui_running') || has('nvim') 
@@ -811,12 +814,12 @@ augroup END
 
 " operator mappings
 " TODO resolve this with vim-sneak
-map <silent>sa <Plug>(operator-surround-append)
-map <silent>sd <Plug>(operator-surround-delete)
-map <silent>sr <Plug>(operator-surround-replace)
-
-nmap <silent>sdd <Plug>(operator-surround-delete)<Plug>(textobj-anyblock-a)
-nmap <silent>srr <Plug>(operator-surround-replace)<Plug>(textobj-anyblock-a)
+" map <silent>sa <Plug>(operator-surround-append)
+" map <silent>sd <Plug>(operator-surround-delete)
+" map <silent>sr <Plug>(operator-surround-replace)
+"
+" nmap <silent>sdd <Plug>(operator-surround-delete)<Plug>(textobj-anyblock-a)
+" nmap <silent>srr <Plug>(operator-surround-replace)<Plug>(textobj-anyblock-a)
 " }}}
 " {{{ diffchar
 let g:DiffUpdate=1
