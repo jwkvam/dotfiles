@@ -26,6 +26,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-after-object'
 " Plug 'junegunn/vim-oblique'
 Plug 'junegunn/vim-slash'
+" Plug 'henrik/vim-indexed-search'
 " Plug 'junegunn/vim-pseudocl'
 
 " Peekaboo extends " and @ in normal mode and <CTRL-R> in insert mode so you
@@ -34,6 +35,7 @@ Plug 'junegunn/vim-peekaboo'
 
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'farmergreg/vim-lastplace'
+Plug 'leafgarland/typescript-vim'
 " Plug 'mtth/cursorcross.vim'
 " Plug 'haya14busa/incsearch.vim'
 " Plug 'lambdatoast/elm.vim'
@@ -141,6 +143,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-eunuch'
+Plug 'xtal8/traces.vim'
 
 " Plug 'tpope/vim-obsession'
 " Plug 'dhruvasagar/vim-prosession'
@@ -630,6 +633,10 @@ function! s:flash()
 endfunction
 
 noremap <plug>(slash-after) zz
+
+" let g:indexed_search_mappings = 0
+" noremap <Plug>(slash-after) :ShowSearchIndex<CR>
+
 " noremap <plug>(slash-after) <sid>flash()
 
 " let g:oblique#incsearch_highlight_all = 1
