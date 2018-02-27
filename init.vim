@@ -20,6 +20,7 @@ let s:nvim = has('nvim')
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'cespare/vim-toml'
 Plug 'unblevable/quick-scope'
 Plug 'dyng/ctrlsf.vim'
 Plug 'junegunn/vim-easy-align'
@@ -132,8 +133,8 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'machakann/vim-sandwich'
 
 Plug 'osyo-manga/vim-over'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
+" Plug 'vim-pandoc/vim-pandoc'
+" Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'honza/vim-snippets'
 
@@ -227,6 +228,9 @@ nnoremap <C-V> v
 vnoremap v <C-V>
 vnoremap <C-V> v
 
+vnoremap < <gv
+vnoremap > >gv
+
 set shell=/bin/bash
 set noshowmode
 set scrolloff=1
@@ -258,6 +262,8 @@ map <ScrollWheelDown> <C-d>
 
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize
 
+nnoremap <bs> <c-^>
+
 " let g:python_highlight_all=1
 
 " let &t_ut=''
@@ -271,7 +277,6 @@ set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize
 "     let &t_te = &t_te . "\033]110\007\033]111\007"
 " endif
 " Colorscheme {{{
-set background=dark
 " autocmd ColorScheme janah highlight Normal ctermbg=230
 " colorscheme janah
 colorscheme seoul256
@@ -483,15 +488,15 @@ vmap <Enter> <Plug>(EasyAlign)
 " }}}
 " ALE {{{
 let g:ale_linters = {
-            \   'python': ['pylint'],
+            \   'python': ['pycodestyle', 'pylint'],
             \   'vim': ['vint'],
             \}
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 
-let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_save = 1
 " You can disable this option too
 " if you don't want linters to run on opening a file
 let g:ale_lint_on_enter = 1
@@ -663,6 +668,7 @@ let g:airline#extensions#tabline#fnamecollapse = 1
 " let g:airline_section_z = airline#section#create(['windowswap', '%3p%%'.spc, 'linenr', ':%3v '])
 "
 let g:visualPagePercent_display_width=10
+" let g:airline_section_z = airline#section#create(['windowswap', '%{gutentags#statusline()}', 'linenr', ':%3v'])
 " let g:airline_section_z = airline#section#create(['windowswap', '%{VisualPercent()}', 'linenr', ':%3v'])
 let g:airline_section_warning = airline#section#create(['%{ALEGetStatusLine()}'])
 let g:airline_section_error = airline#section#create([''])
