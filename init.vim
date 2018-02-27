@@ -1,10 +1,7 @@
 scriptencoding utf-8
-" let g:python_host_prog='/Users/jacques/miniconda/bin/python'
-" let g:python3_host_prog='/Users/jacques/miniconda/envs/py35/bin/python3'
-" let g:ycm_path_to_python_interpreter='/Users/jacques/miniconda/bin/python'
-" let g:ycm_python_binary_path='/Users/jacques/miniconda/bin/python'
-" let g:ycm_path_to_python_interpreter='/Users/jacques/miniconda/bin/python'
+let s:nvim = has('nvim')
 
+" YCM python binary paths {{{
 let g:python_host_prog='/usr/bin/python2.7'
 let g:python2_host_prog='/usr/bin/python2.7'
 if filereadable($HOME.'/miniconda/bin/python3')
@@ -12,15 +9,33 @@ if filereadable($HOME.'/miniconda/bin/python3')
 endif
 let g:ycm_path_to_python_interpreter='/usr/bin/python2.7'
 let g:ycm_python_binary_path='/usr/bin/python2.7'
-" let g:ycm_python_binary_path='/Users/jacques/miniconda/bin/python'
-" let g:python_host_prog='/Users/jacques/miniconda/bin/python'
-" let g:ycm_path_to_python_interpreter='/Users/jacques/miniconda/bin/python'
+" }}}
 
-let s:nvim = has('nvim')
-
+" Plugins {{{
 call plug#begin('~/.config/nvim/plugged')
 
+" Languages {{{
+
 Plug 'cespare/vim-toml'
+Plug 'leafgarland/typescript-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'JuliaEditorSupport/julia-vim'
+" maintained vim-fish fork
+Plug 'wilriker/vim-fish'
+Plug 'hynek/vim-python-pep8-indent'
+Plug 'tmhedberg/SimpylFold'
+" Plug 'lervag/vimtex'
+" Plug 'othree/vajs.vim'
+" }}}
+
+" Colorschemes {{{
+" Plug 'jnurmine/Zenburn'
+" Plug 'morhetz/gruvbox'
+" Plug 'mhinz/vim-janah'
+Plug 'junegunn/seoul256.vim'
+" }}}
+"
 Plug 'unblevable/quick-scope'
 Plug 'dyng/ctrlsf.vim'
 Plug 'junegunn/vim-easy-align'
@@ -34,24 +49,16 @@ Plug 'junegunn/vim-slash'
 " can see the contents of the registers.
 Plug 'junegunn/vim-peekaboo'
 
-Plug 'JuliaEditorSupport/julia-vim'
 Plug 'farmergreg/vim-lastplace'
-Plug 'leafgarland/typescript-vim'
 " Plug 'mtth/cursorcross.vim'
 " Plug 'haya14busa/incsearch.vim'
-" Plug 'lambdatoast/elm.vim'
-" Plug 'mxw/vim-jsx'
-" Plug 'othree/vajs.vim'
-" Plug 'othree/vajs.vim'
 Plug 'matze/vim-move'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
 Plug 'uarun/vim-protobuf'
 Plug 'alfredodeza/pytest.vim'
 Plug 'abaldwin88/roamer.vim'
 
-Plug 'hecal3/vim-leader-guide'
-Plug 'naddeoa/vim-visual-page-percent'
+" Plug 'hecal3/vim-leader-guide'
+" Plug 'naddeoa/vim-visual-page-percent'
 
 Plug 'jreybert/vimagit'
 
@@ -68,19 +75,11 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'janko-m/vim-test'
 
-" maintained vim-fish fork
-Plug 'wilriker/vim-fish'
 
 " Plug 'luochen1990/indent-detector.vim'
 
 Plug 'vim-scripts/diffchar.vim'
 
-" {{{ Color Plugins
-" Plug 'jnurmine/Zenburn'
-" Plug 'morhetz/gruvbox'
-" Plug 'mhinz/vim-janah'
-Plug 'junegunn/seoul256.vim'
-" }}}
 
 Plug 'Valloric/ListToggle'
 
@@ -99,7 +98,6 @@ endif
 Plug 'SirVer/ultisnips'
 
 " Plug 'boucherm/ShowMotion'
-Plug 'tmhedberg/SimpylFold'
 Plug 'Raimondi/delimitMate'
 
 Plug 'w0rp/ale'
@@ -125,7 +123,7 @@ Plug 'easymotion/vim-easymotion'
 " Plug 'justinmk/vim-sneak'
 Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
 
 " Plug 'rhysd/vim-operator-surround'
 " Plug 'rhysd/vim-textobj-anyblock'
@@ -135,7 +133,6 @@ Plug 'machakann/vim-sandwich'
 Plug 'osyo-manga/vim-over'
 " Plug 'vim-pandoc/vim-pandoc'
 " Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'hynek/vim-python-pep8-indent'
 Plug 'honza/vim-snippets'
 
 Plug 'tpope/vim-fugitive'
@@ -144,7 +141,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-eunuch'
-Plug 'xtal8/traces.vim'
+" Plug 'xtal8/traces.vim'
 
 " Plug 'tpope/vim-obsession'
 " Plug 'dhruvasagar/vim-prosession'
@@ -157,16 +154,18 @@ Plug 'kana/vim-textobj-user'
 Plug 'blueyed/vim-diminactive'
 " Plug 't9md/vim-choosewin'
 
-" Plug 'lervag/vimtex'
 " Plug 'bfredl/nvim-ipy'
-" Plug '~/.vim/custom/dim_inactive'
 
 call plug#end()
+" Plugins }}}
 
+" Inccommmand {{{
 if exists('&inccommand')
     set inccommand=split
 endif
+" }}}
 
+" Terminal mappings {{{
 if s:nvim && exists(':tnoremap')
     nnoremap <silent> <f4> :REPLSendLine<cr>
     vnoremap <silent> <f4> :REPLSendSelection<cr>
@@ -216,6 +215,7 @@ if s:nvim && exists(':tnoremap')
 
     " let g:neoterm_position ='horizontal'
 endif
+" }}}
 
 " Basic options {{{
 " syntax enable
@@ -253,12 +253,27 @@ set breakindent
 set synmaxcol=800
 set nostartofline
 set formatoptions=cqrt
+
+set nowrap
+set sidescroll=5
+set showcmd
+set showmatch
+set cursorline
+" set cursorcolumn
+set matchtime=1
+set equalalways
+" Not sure why I had this here
+" but it causes an error with vimtex
+" let loaded_matchparen=1
+
+" set lazyredraw
 " }}}
 
-
+" Mouse {{{
 set mouse=a
 map <ScrollWheelUp> <C-u>
 map <ScrollWheelDown> <C-d>
+" }}}
 
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize
 
@@ -276,6 +291,7 @@ nnoremap <bs> <c-^>
 "     let &t_ti = &t_ti . "\033]10;#f6f3e8\007\033]11;#242424\007"
 "     let &t_te = &t_te . "\033]110\007\033]111\007"
 " endif
+
 " Colorscheme {{{
 " autocmd ColorScheme janah highlight Normal ctermbg=230
 " colorscheme janah
@@ -290,10 +306,9 @@ inoremap <C-c> <Esc>
 " inoremap jk <Esc>
 "
 
-inoremap ;u <Esc>viwUea
-inoremap <c-l> <Esc>viwUea
+" inoremap ;u <Esc>viwUea
+" inoremap <c-l> <Esc>viwUea
 
-" :w!! 
 " write the file when you accidentally opened it without the right (root) privileges
 cmap w!! w !sudo tee % > /dev/null
 
@@ -304,8 +319,9 @@ cmap w!! w !sudo tee % > /dev/null
 " 
 " inoremap <Enter> <Esc>
 
-autocmd BufRead,BufNewFile *.md setlocal spell
-autocmd BufRead,BufNewFile *.tex setlocal spell
+" Files to check spelling on {{{
+autocmd BufRead,BufNewFile *.md,*.tex,*.rst setlocal spell
+" }}}
 
 " Window dimensions {{{
 set winheight=30
@@ -336,20 +352,6 @@ if !isdirectory(expand(&directory))
     call mkdir(expand(&directory), 'p')
 endif
 " }}}
-
-set nowrap
-set sidescroll=5
-set showcmd
-set showmatch
-set cursorline
-" set cursorcolumn
-set matchtime=1
-set equalalways
-" Not sure why I had this here
-" but it causes an error with vimtex
-" let loaded_matchparen=1
-
-" set lazyredraw
 
 " {{{ clipboard paste
 vnoremap <Leader>y "+y
@@ -505,7 +507,7 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " }}}
-" FZF {{{ =============================================================================
+" FZF {{{
 " Set the following env variable to get nice file filtering
 " FZF_DEFAULT_COMMAND 'ag -g ""'
 
@@ -535,18 +537,6 @@ let g:fzf_action = {
 " nmap <leader>. <plug>(fzf-maps-n)
 " xmap <leader>. <plug>(fzf-maps-x)
 " omap <leader>. <plug>(fzf-maps-o)
-" }}}
-" CtrlP {{{
-" let g:ctrlp_map = '<c-p>'
-" let g:ctrlp_cmd = 'CtrlPMixed'
-" let g:ctrlp_by_filename = 1
-" nnoremap <Leader>. :CtrlPTag<cr>
-" let g:ctrlp_custom_ignore = {
-"       \ 'dir': 'datasets\|build\|htmlcov',
-"       \ }
-"
-" let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
-" let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
 " }}}
 " Fugitive {{{
 nnoremap <Leader>gd :Gdiff<CR>
@@ -870,10 +860,10 @@ let g:SignatureDeferPlacement=0
 
 " }}}
 " {{{ leader-guide
-let g:lmap = {}
-call leaderGuide#register_prefix_descriptions('<Space>', 'g:lmap')
-nnoremap <silent> <leader> :LeaderGuide '<Space>'<CR>
-vnoremap <silent> <leader> :LeaderGuideVisual '<Space>'<CR>
+" let g:lmap = {}
+" call leaderGuide#register_prefix_descriptions('<Space>', 'g:lmap')
+" nnoremap <silent> <leader> :LeaderGuide '<Space>'<CR>
+" vnoremap <silent> <leader> :LeaderGuideVisual '<Space>'<CR>
 " }}}
 " {{{ vim-test
 let g:test#strategy = 'neoterm'
