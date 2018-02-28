@@ -2,13 +2,14 @@ scriptencoding utf-8
 let s:nvim = has('nvim')
 
 " YCM python binary paths {{{
-let g:python_host_prog='/usr/bin/python2.7'
 let g:python2_host_prog='/usr/bin/python2.7'
 if filereadable($HOME.'/miniconda/bin/python3')
-    let g:python3_host_prog=$HOME.'/miniconda/bin/python3'
+    let g:python3_host_prog=$HOME.'/miniconda/bin/python'
 endif
-let g:ycm_path_to_python_interpreter='/usr/bin/python2.7'
-let g:ycm_python_binary_path='/usr/bin/python2.7'
+
+let g:python_host_prog=$HOME.'/miniconda/bin/python'
+let g:ycm_python_binary_path=$HOME.'/miniconda/bin/python'
+let g:ycm_path_to_python_interpreter=$HOME.'/miniconda/bin/python'
 " }}}
 
 " Plugins {{{
@@ -85,11 +86,12 @@ Plug 'Valloric/ListToggle'
 
 " Plug 'Shougo/deoplete.nvim'
 " Plug 'zchee/deoplete-jedi'
-if has('mac')
-  Plug 'Valloric/YouCompleteMe', { 'do': 'MACOSX_DEPLOYMENT_TARGET=\"\" PATH=/usr/bin:$PATH ./install.py --clang-completer' }
-elseif has('unix')
-  Plug 'Valloric/YouCompleteMe', { 'do': 'python2.7 install.py --clang-completer' }
-endif
+" if has('mac')
+"   Plug 'Valloric/YouCompleteMe', { 'do': 'MACOSX_DEPLOYMENT_TARGET=\"\" PATH=/usr/bin:$PATH ./install.py --clang-completer' }
+" elseif has('unix')
+"   Plug 'Valloric/YouCompleteMe', { 'do': 'python2.7 install.py --clang-completer' }
+" endif
+Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --clang-completer' }
 
 " This is an enhanced version of the original Vim 6.1 Python syntax
 " highlighting python.vim
