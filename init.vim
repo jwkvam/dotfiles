@@ -17,6 +17,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Languages {{{
 
+Plug 'davidhalter/jedi-vim'
 Plug 'cespare/vim-toml'
 Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
@@ -188,9 +189,6 @@ if s:nvim && exists(':tnoremap')
         return lines
     endfunction
 
-    au TermOpen * let g:last_term_job_id = b:terminal_job_id
-    au WinEnter term://* let g:last_term_job_id = b:terminal_job_id
-
     tnoremap ˙ <c-\><c-n><c-w>h
     tnoremap ∆ <c-\><c-n><c-w>j
     tnoremap ˚ <c-\><c-n><c-w>k
@@ -203,7 +201,11 @@ if s:nvim && exists(':tnoremap')
     nnoremap ˚ <c-w>k
     nnoremap ¬ <c-w>l
     " tnoremap <silent> <c-w>z <c-\><c-n>:ZoomWinTabToggle<cr>
-    au WinEnter term://* startinsert
+    augroup terminalstuff
+        au TermOpen * let g:last_term_job_id = b:terminal_job_id
+        au WinEnter term://* let g:last_term_job_id = b:terminal_job_id
+        au WinEnter term://* startinsert
+    augroup END
 
     " nnoremap Ò <c-w>v \| :term fish<CR>
     " nnoremap Ô <c-w>s \| :term fish<CR>
@@ -224,7 +226,7 @@ endif
 " syntax sync fromstart
 
 nnoremap ; :
-" nnoremap : ;
+" switch v and c-v
 nnoremap v <C-V>
 nnoremap <C-V> v
 vnoremap v <C-V>
@@ -307,6 +309,8 @@ inoremap <C-[> <C-c>
 inoremap <C-c> <Esc>
 " inoremap jk <Esc>
 "
+"nnoremap <C-w>jj j
+"nnoremap <C-w>j j
 
 " inoremap ;u <Esc>viwUea
 " inoremap <c-l> <Esc>viwUea
@@ -318,11 +322,14 @@ cmap w!! w !sudo tee % > /dev/null
 " filetype indent on
 
 " autocmd FileType startify setlocal fdm=manual
-" 
-" inoremap <Enter> <Esc>
+augroup filestuff
+    autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+    " 
+    " inoremap <Enter> <Esc>
 
-" Files to check spelling on {{{
-autocmd BufRead,BufNewFile *.md,*.tex,*.rst setlocal spell
+    " Files to check spelling on {{{
+    autocmd BufRead,BufNewFile *.md,*.tex,*.rst setlocal spell
+augroup END
 " }}}
 
 " Window dimensions {{{
@@ -725,6 +732,10 @@ imap <silent> <buffer> ¢ <Plug>delimitMateJumpMany
 " deoplete {{{
 " autocmd CompleteDone * pclose!
 " let g:deoplete#enable_at_startup = 1
+" }}}
+" {{{ jedi
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
 " }}}
 " youcompleteme {{{
 " let g:ycm_key_list_select_completion=['<C-n>']  ", '<Down>']
