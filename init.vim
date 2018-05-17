@@ -181,12 +181,12 @@ if s:nvim && exists(':tnoremap')
     endfunction
 
     function! s:GetVisual()
-        let [lnum1, col1] = getpos("'<")[1:2]
-        let [lnum2, col2] = getpos("'>")[1:2]
-        let lines = getline(lnum1, lnum2)
-        let lines[-1] = lines[-1][:col2 - 2]
-        let lines[0] = lines[0][col1 - 1:]
-        return lines
+        let [l:lnum1, l:col1] = getpos("'<")[1:2]
+        let [l:lnum2, l:col2] = getpos("'>")[1:2]
+        let l:lines = getline(l:lnum1, l:lnum2)
+        let l:lines[-1] = l:lines[-1][:l:col2 - 2]
+        let l:lines[0] = l:lines[0][l:col1 - 1:]
+        return l:lines
     endfunction
 
     tnoremap ˙ <c-\><c-n><c-w>h
@@ -286,8 +286,8 @@ nnoremap <bs> <c-^>
 " let g:python_highlight_all=1
 
 " let &t_ut=''
-" if has('gui_running') || has('nvim') 
-"     hi Normal 		guifg=#f6f3e8 guibg=#242424 
+" if has('gui_running') || has('nvim')
+"     hi Normal 		guifg=#f6f3e8 guibg=#242424
 " else
 "     " Set the terminal default background and foreground colors, thereby
 "     " improving performance by not needing to set these colors on empty cells.
@@ -324,7 +324,7 @@ cmap w!! w !sudo tee % > /dev/null
 " autocmd FileType startify setlocal fdm=manual
 augroup filestuff
     autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-    " 
+    "
     " inoremap <Enter> <Esc>
 
     " Files to check spelling on {{{
@@ -396,7 +396,7 @@ set noreadonly
 
 " remove trailing whitespace from python files
 augroup whitespace
-    autocmd BufWritePre *.py,*.tex,*.js,*.md,*.html,*.css :%s/\s\+$//e
+    autocmd BufWritePre *.py,*.tex,*.js,*.md,*.html,*.css,*.vim :%s/\s\+$//e
     autocmd BufWritePre *.hs,*.scss,*.rst,*.rb :%s/\s\+$//e
 augroup END
 
@@ -523,7 +523,7 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " noremap <silent> <C-p> :call fzf#run()<CR>
 " noremap <silent> <C-p> :call fzf#run()<CR>
 " Open files in horizontal split
-" 
+"
 let g:fzf_files_options = '--preview "highlight --failsafe -O ansi {} 2> /dev/null | head -'.&lines.'"'
 
 function! s:find_git_root()
@@ -654,6 +654,7 @@ noremap <plug>(slash-after) zz
 " Airline {{{
 " let g:airline_theme='powerlineish'
 " let g:airline#extensions#neomake#enabled = 0
+let g:airline#extensions#ale#enabled = 1
 let g:airline_theme='zenburn'
 " let g:airline_theme='base16'
 " let g:airline_theme='murrmur'
@@ -669,8 +670,9 @@ let g:airline#extensions#tabline#fnamecollapse = 1
 let g:visualPagePercent_display_width=10
 " let g:airline_section_z = airline#section#create(['windowswap', '%{gutentags#statusline()}', 'linenr', ':%3v'])
 " let g:airline_section_z = airline#section#create(['windowswap', '%{VisualPercent()}', 'linenr', ':%3v'])
-let g:airline_section_warning = airline#section#create(['%{ALEGetStatusLine()}'])
-let g:airline_section_error = airline#section#create([''])
+" let g:airline_section_warning = airline#section#create(['%{ALEGetStatusLine()}'])
+" let g:airline_section_warning = airline#section#create(['%{ale#statusline#Count()}'])
+" let g:airline_section_error = airline#section#create([''])
 let g:airline_mode_map = {
       \ '__' : '-',
       \ 'n'  : 'N',
