@@ -322,6 +322,8 @@ cmap w!! w !sudo tee % > /dev/null
 " filetype indent on
 
 " autocmd FileType startify setlocal fdm=manual
+autocmd BufNewFile,BufRead *.pyi set syntax=python
+
 augroup filestuff
     autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
     "
