@@ -32,7 +32,8 @@
 
 # open terminal, blazingly fast compared to iTerm/Hyper
 # cmd - return : open -na /Applications/Iterm.app
-cmd - return : osascript ~/.hammerspoon/term.osa
+# cmd - return : osascript ~/.hammerspoon/term.osa
+cmd - return : open -na /Applications/Alacritty.app
 
 # close focused window
 alt - w : chunkc tiling::window --close
