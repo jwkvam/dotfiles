@@ -92,7 +92,7 @@ Plug 'Valloric/ListToggle'
 " elseif has('unix')
 "   Plug 'Valloric/YouCompleteMe', { 'do': 'python2.7 install.py --clang-completer' }
 " endif
-Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py' }
 
 " This is an enhanced version of the original Vim 6.1 Python syntax
 " highlighting python.vim
@@ -138,7 +138,7 @@ Plug 'osyo-manga/vim-over'
 " Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'honza/vim-snippets'
 
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
@@ -282,6 +282,7 @@ map <ScrollWheelDown> <C-d>
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize
 
 nnoremap <bs> <c-^>
+nnoremap <c-6> <c-^>
 
 " let g:python_highlight_all=1
 
@@ -399,7 +400,7 @@ set noreadonly
 " remove trailing whitespace from python files
 augroup whitespace
     autocmd BufWritePre *.py,*.tex,*.js,*.md,*.html,*.css,*.vim :%s/\s\+$//e
-    autocmd BufWritePre *.hs,*.scss,*.rst,*.rb :%s/\s\+$//e
+    autocmd BufWritePre *.hs,*.scss,*.rst,*.rb,*.R :%s/\s\+$//e
 augroup END
 
 " " recall cursor position for file {{{
@@ -503,6 +504,7 @@ vmap <Enter> <Plug>(EasyAlign)
 let g:ale_linters = {
             \   'python': ['pycodestyle', 'pylint'],
             \   'vim': ['vint'],
+            \   'r': ['lintr']
             \}
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
@@ -979,6 +981,9 @@ xmap <leader>f <Plug>(quick-replace)
 " {{{ choosewin
 nmap Q <Plug>(choosewin)
 let g:choosewin_overlay_enable = 1
+" }}}
+" {{{ kite
+let g:kite_auto_complete=0
 " }}}
 
 let g:lt_location_list_toggle_map = '<leader>o'
