@@ -15,9 +15,9 @@ env:
 
 # Window dimensions in character columns and lines
 # (changes require restart)
-dimensions:
-  columns: 80
-  lines: 24
+# dimensions:
+#   columns: 80
+#   lines: 60
 
 # Adds this many blank pixels of padding around the window
 # Units are physical pixels; this is not DPI aware.
@@ -85,83 +85,75 @@ render_timer: false
 
 # Use custom cursor colors. If true, display the cursor in the cursor.foreground
 # and cursor.background colors, otherwise invert the colors of the cursor.
-custom_cursor_colors: false
+custom_cursor_colors: true
 
-# Colors (Pencil Dark)
-colors:
- # Default Colors
- primary:
-   # background: '0x212121'
-   background: '0x4b4b4b'
-   foreground: '0xf1f1f1'
- # Normal colors
- normal:
-   black:   '0x212121'
-   red:     '0xc30771'
-   green:   '0x10a778'
-   yellow:  '0xa89c14'
-   blue:    '0x008ec4'
-   magenta: '0x523c79'
-   cyan:    '0x20a5ba'
-   white:   '0xe0e0e0'
- # Bright colors
- bright:
-   black:   '0x212121'
-   red:     '0xfb007a'
-   green:   '0x5fd7af'
-   yellow:  '0xf3e430'
-   blue:    '0x20bbfc'
-   magenta: '0x6855de'
-   cyan:    '0x4fb8cc'
-   white:   '0xf1f1f1'
-
-# Colors (Tomorrow Night Bright)
+# # Base16 Zenburn - alacritty color config
+# # elnawe
 # colors:
-  # Default colors
-  # primary:
-  #   # background: '0x000000'
-  #   # foreground: '0xeaeaea'
-  #   background: '0x4b4b4b'
-  #   foreground: '0xd9d9d9'
-  #
-  # # Colors the cursor will use if `custom_cursor_colors` is true
-  # cursor:
-  #   text: '0x000000'
-  #   cursor: '0xffffff'
-  #
-  # # Normal colors
-  # normal:
-  #   black:   '0x000000'
-  #   red:     '0xd54e53'
-  #   green:   '0xb9ca4a'
-  #   yellow:  '0xe6c547'
-  #   blue:    '0x7aa6da'
-  #   magenta: '0xc397d8'
-  #   cyan:    '0x70c0ba'
-  #   white:   '0xffffff'
-  #
-  # # Bright colors
-  # bright:
-  #   black:   '0x666666'
-  #   red:     '0xff3334'
-  #   green:   '0x9ec400'
-  #   yellow:  '0xe7c547'
-  #   blue:    '0x7aa6da'
-  #   magenta: '0xb77ee0'
-  #   cyan:    '0x54ced6'
-  #   white:   '0xffffff'
-  #
-  # # Dim colors (Optional)
-  # dim:
-  #   black:   '0x333333'
-  #   red:     '0xf2777a'
-  #   green:   '0x99cc99'
-  #   yellow:  '0xffcc66'
-  #   blue:    '0x6699cc'
-  #   magenta: '0xcc99cc'
-  #   cyan:    '0x66cccc'
-  #   white:   '0xdddddd'
+#   # Default colors
+#   primary:
+#     background: '0x3f3f3f'
+#     foreground: '0xdcdccc'
+#
+#   # Colors the cursor will use if `custom_cursor_colors` is true
+#   cursor:
+#     text: '0x3f3f3f'
+#     cursor: '0xdcdccc'
+#
+#   # Normal colors
+#   normal:
+#     black:   '0x3f3f3f'
+#     red:     '0xdca3a3'
+#     green:   '0x5f7f5f'
+#     yellow:  '0xe0cf9f'
+#     blue:    '0x7cb8bb'
+#     magenta: '0xdc8cc3'
+#     cyan:    '0x93e0e3'
+#     white:   '0xdcdccc'
+#
+#   # Bright colors
+#   bright:
+#     black:   '0x4f4f4f'
+#     red:     '0xdfaf8f'
+#     green:   '0x404040'
+#     yellow:  '0x606060'
+#     blue:    '0x808080'
+#     magenta: '0xc0c0c0'
+#     cyan:    '0x000000'
+#     white:   '0xdcdccc'
 
+colors:
+  # Default colors
+  primary:
+    background: '0x3f3f3f'
+    foreground: '0xdcdccc'
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '0x3f3f3f'
+    cursor: '0xdcdccc'
+
+  # Normal colors
+  normal:
+    black:   '0x3f3f3f'
+    red:     '0xdca3a3'
+    green:   '0x5f7f5f'
+    yellow:  '0xe0cf9f'
+    blue:    '0x7cb8bb'
+    magenta: '0xdc8cc3'
+    cyan:    '0x93e0e3'
+    white:   '0xdcdccc'
+
+  # Bright colors
+  bright:
+    black:   '0x4f4f4f'
+    red:     '0xdca3a3'
+    green:   '0x5f7f5f'
+    yellow:  '0xe0cf9f'
+    blue:    '0x7cb8bb'
+    magenta: '0xdc8cc3'
+    cyan:    '0x93e0e3'
+    white:   '0xdcdccc'
 
 # Visual Bell
 #
