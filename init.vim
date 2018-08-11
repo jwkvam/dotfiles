@@ -38,6 +38,7 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'junegunn/seoul256.vim'
 " }}}
 "
+Plug 'RRethy/vim-illuminate'
 Plug 'unblevable/quick-scope'
 Plug 'dyng/ctrlsf.vim'
 Plug 'junegunn/vim-easy-align'
