@@ -1,0 +1,6 @@
+--exclude=.mypy_cache
+--exclude=*.c
+--exclude=env
+--exclude=htmlcov
+--exclude=coverage
+--exclude=dist
