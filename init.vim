@@ -38,7 +38,7 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'junegunn/seoul256.vim'
 " }}}
 
-" Plug 'unblevable/quick-scope' SUPER SLOW!+!!!!
+" Plug 'unblevable/quick-scope' SUPER SLOW!+!!!! https://github.com/unblevable/quick-scope/issues/8
 Plug 'dyng/ctrlsf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-after-object'
