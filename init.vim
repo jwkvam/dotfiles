@@ -37,31 +37,22 @@ Plug 'tmhedberg/SimpylFold'
 " Plug 'mhinz/vim-janah'
 Plug 'junegunn/seoul256.vim'
 " }}}
-"
-Plug 'RRethy/vim-illuminate'
-Plug 'unblevable/quick-scope'
+
+" Plug 'unblevable/quick-scope' SUPER SLOW!+!!!!
 Plug 'dyng/ctrlsf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-after-object'
-" Plug 'junegunn/vim-oblique'
 Plug 'junegunn/vim-slash'
-" Plug 'henrik/vim-indexed-search'
-" Plug 'junegunn/vim-pseudocl'
 
 " Peekaboo extends " and @ in normal mode and <CTRL-R> in insert mode so you
 " can see the contents of the registers.
 Plug 'junegunn/vim-peekaboo'
 
 Plug 'farmergreg/vim-lastplace'
-" Plug 'mtth/cursorcross.vim'
-" Plug 'haya14busa/incsearch.vim'
 Plug 'matze/vim-move'
 Plug 'uarun/vim-protobuf'
 Plug 'alfredodeza/pytest.vim'
 Plug 'abaldwin88/roamer.vim'
-
-" Plug 'hecal3/vim-leader-guide'
-" Plug 'naddeoa/vim-visual-page-percent'
 
 Plug 'jreybert/vimagit'
 
@@ -79,86 +70,86 @@ Plug 'junegunn/fzf.vim'
 Plug 'janko-m/vim-test'
 
 
-" Plug 'luochen1990/indent-detector.vim'
 
 Plug 'vim-scripts/diffchar.vim'
 
 
 Plug 'Valloric/ListToggle'
 
-" Plug 'Shougo/deoplete.nvim'
-" Plug 'zchee/deoplete-jedi'
-" if has('mac')
-"   Plug 'Valloric/YouCompleteMe', { 'do': 'MACOSX_DEPLOYMENT_TARGET=\"\" PATH=/usr/bin:$PATH ./install.py --clang-completer' }
-" elseif has('unix')
-"   Plug 'Valloric/YouCompleteMe', { 'do': 'python2.7 install.py --clang-completer' }
-" endif
 Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py' }
-
-" This is an enhanced version of the original Vim 6.1 Python syntax
-" highlighting python.vim
-" Plug 'vim-python/python-syntax'
-
 Plug 'SirVer/ultisnips'
 
-" Plug 'boucherm/ShowMotion'
 Plug 'Raimondi/delimitMate'
 
 Plug 'w0rp/ale'
 
-" Plug 'luochen1990/rainbow'
-Plug 'junegunn/rainbow_parentheses.vim'
+" Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'wellle/targets.vim'
 
 Plug 'tomtom/tcomment_vim'
 Plug 'tomtom/tlib_vim'
 
-" Plug 'mbbill/undotree'
-
-" Plug 'MarcWeber/vim-addon-local-vimrc'
-" Plug 'MarcWeber/vim-addon-mw-utils'
-
-" Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'itchyny/lightline.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'easymotion/vim-easymotion'
-" Plug 'justinmk/vim-sneak'
 Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides'
-" Plug 'terryma/vim-multiple-cursors'
-
-" Plug 'rhysd/vim-operator-surround'
-" Plug 'rhysd/vim-textobj-anyblock'
 
 Plug 'machakann/vim-sandwich'
 
 Plug 'osyo-manga/vim-over'
-" Plug 'vim-pandoc/vim-pandoc'
-" Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'honza/vim-snippets'
 
-" Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-eunuch'
-" Plug 'xtal8/traces.vim'
-
-" Plug 'tpope/vim-obsession'
-" Plug 'dhruvasagar/vim-prosession'
 
 Plug 'mhinz/vim-startify'
 
 Plug 'kana/vim-operator-user'
 Plug 'kana/vim-textobj-user'
 
-Plug 'blueyed/vim-diminactive'
-" Plug 't9md/vim-choosewin'
+" Unused
 
+" Plug 'RRethy/vim-illuminate'
+" Plug 'junegunn/vim-oblique'
+" Plug 'henrik/vim-indexed-search'
+" Plug 'junegunn/vim-pseudocl'
+" Plug 'mtth/cursorcross.vim'
+" Plug 'haya14busa/incsearch.vim'
+" Plug 'MarcWeber/vim-addon-local-vimrc'
+" Plug 'MarcWeber/vim-addon-mw-utils'
+" Plug 'Shougo/deoplete.nvim'
 " Plug 'bfredl/nvim-ipy'
+" Plug 'blueyed/vim-diminactive'
+" Plug 'boucherm/ShowMotion'
+" Plug 'dhruvasagar/vim-prosession'
+" Plug 'hecal3/vim-leader-guide'
+" Plug 'itchyny/lightline.vim'
+" Plug 'justinmk/vim-sneak'
+" Plug 'luochen1990/indent-detector.vim'
+" Plug 'luochen1990/rainbow'
+" Plug 'mbbill/undotree'
+" Plug 'naddeoa/vim-visual-page-percent'
+" Plug 'rhysd/vim-operator-surround'
+" Plug 'rhysd/vim-textobj-anyblock'
+" Plug 't9md/vim-choosewin'
+" Plug 'terryma/vim-multiple-cursors'
+" Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-obsession'
+" Plug 'vim-pandoc/vim-pandoc'
+" Plug 'vim-pandoc/vim-pandoc-syntax'
+" Plug 'vim-python/python-syntax'
+" Plug 'xtal8/traces.vim'
+" Plug 'zchee/deoplete-jedi'
+" if has('mac')
+"   Plug 'Valloric/YouCompleteMe', { 'do': 'MACOSX_DEPLOYMENT_TARGET=\"\" PATH=/usr/bin:$PATH ./install.py --clang-completer' }
+" elseif has('unix')
+"   Plug 'Valloric/YouCompleteMe', { 'do': 'python2.7 install.py --clang-completer' }
+" endif
 
 call plug#end()
 " Plugins }}}
@@ -456,6 +447,8 @@ noremap + <C-W>>
 
 " Highlight Margin {{{
 hi ColorMargin ctermbg=magenta
+" hi ActiveWindow ctermbg=16 | hi InactiveWindow ctermbg=233
+" set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
 
 function! MarkMargin (on, margin)
     if exists('b:MarkMargin')
@@ -894,8 +887,9 @@ let g:move_key_modifier = 'C'
 " let g:cursorcross_dynamic = 'clw'
 " }}}
 " {{{ diminactive
+" TODO look into NormalNC
 " highlight ColorColumn ctermbg=235 guibg=#334444
-highlight ColorColumn ctermbg=235 guibg=#1e2828
+" highlight ColorColumn ctermbg=235 guibg=#1e2828
 " highlight ColorColumn ctermbg=0 guibg=#004444
 " highlight ColorColumn ctermbg=255 guibg=#a9a9a9
 " let g:diminactive_use_syntax = 1
