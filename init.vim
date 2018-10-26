@@ -50,7 +50,7 @@ Plug 'junegunn/vim-peekaboo'
 
 Plug 'farmergreg/vim-lastplace'
 Plug 'matze/vim-move'
-Plug 'uarun/vim-protobuf'
+" Plug 'uarun/vim-protobuf'
 Plug 'alfredodeza/pytest.vim'
 Plug 'abaldwin88/roamer.vim'
 
@@ -106,7 +106,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-eunuch'
 
-Plug 'mhinz/vim-startify'
+" Plug 'mhinz/vim-startify'
 
 Plug 'kana/vim-operator-user'
 Plug 'kana/vim-textobj-user'
