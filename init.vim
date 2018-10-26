@@ -83,7 +83,6 @@ Plug 'Raimondi/delimitMate'
 
 Plug 'w0rp/ale'
 
-" Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'wellle/targets.vim'
 
 Plug 'tomtom/tcomment_vim'
@@ -111,6 +110,7 @@ Plug 'mhinz/vim-startify'
 
 Plug 'kana/vim-operator-user'
 Plug 'kana/vim-textobj-user'
+Plug 'luochen1990/rainbow'
 
 " Unused
 
@@ -131,7 +131,7 @@ Plug 'kana/vim-textobj-user'
 " Plug 'itchyny/lightline.vim'
 " Plug 'justinmk/vim-sneak'
 " Plug 'luochen1990/indent-detector.vim'
-" Plug 'luochen1990/rainbow'
+" Plug 'junegunn/rainbow_parentheses.vim'
 " Plug 'mbbill/undotree'
 " Plug 'naddeoa/vim-visual-page-percent'
 " Plug 'rhysd/vim-operator-surround'
@@ -600,10 +600,14 @@ let g:ctrlsf_confirm_save=0
 
 " }}}
 " Rainbow Parentheses {{{
-augroup rainbow_files
-    autocmd!
-    autocmd FileType lisp,python,julia RainbowParentheses
-augroup END
+" augroup rainbow_files
+"     autocmd!
+"     autocmd FileType lisp,python,julia RainbowParentheses
+" augroup END
+let g:rainbow_conf = {
+	\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+	\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+\}
 let g:rainbow_active = 1
 " }}}
 " Incremental Search {{{
