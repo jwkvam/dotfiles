@@ -16,8 +16,11 @@
     st = status -sb
     stu = status -sbu
 [diff]
-    tool = vimdiff
+    #tool = vimdiff
+    tool = kitty
     algorithm = patience
+[difftool "kitty"]
+    cmd = kitty +kitten diff $LOCAL $REMOTE
 [push]
     default = simple
 [color "diff-highlight"]
@@ -28,9 +31,9 @@
 [core]
     editor = nvim
 [filter "lfs"]
-    process = git-lfs filter-process
+	process = git-lfs filter-process
     required = true
     clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
+	smudge = git-lfs smudge -- %f
 [diff "jupyternotebook"]
     command = git-nbdiffdriver diff

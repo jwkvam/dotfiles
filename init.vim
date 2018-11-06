@@ -23,6 +23,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'JuliaEditorSupport/julia-vim'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 " maintained vim-fish fork
 Plug 'wilriker/vim-fish'
 Plug 'hynek/vim-python-pep8-indent'
@@ -49,7 +50,7 @@ Plug 'junegunn/vim-slash'
 Plug 'junegunn/vim-peekaboo'
 
 Plug 'farmergreg/vim-lastplace'
-Plug 'matze/vim-move'
+" Plug 'matze/vim-move'
 " Plug 'uarun/vim-protobuf'
 Plug 'alfredodeza/pytest.vim'
 Plug 'abaldwin88/roamer.vim'
