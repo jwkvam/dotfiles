@@ -7,9 +7,11 @@ if filereadable($HOME.'/miniconda/bin/python3')
     let g:python3_host_prog=$HOME.'/miniconda/bin/python'
 endif
 
-let g:python_host_prog=$HOME.'/miniconda/bin/python'
+" let g:python_host_prog=$HOME.'/miniconda/bin/python'
+let g:python_host_prog='/usr/bin/python2.7'
 let g:ycm_python_binary_path=$HOME.'/miniconda/bin/python'
-let g:ycm_path_to_python_interpreter=$HOME.'/miniconda/bin/python'
+" let g:ycm_path_to_python_interpreter=$HOME.'/miniconda/bin/python'
+let g:ycm_python_interpreter_path=$HOME.'/miniconda/bin/python'
 " }}}
 
 " Plugins {{{
@@ -77,7 +79,7 @@ Plug 'vim-scripts/diffchar.vim'
 
 Plug 'Valloric/ListToggle'
 
-Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py' }
+Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python install.py' }
 Plug 'SirVer/ultisnips'
 
 Plug 'Raimondi/delimitMate'
@@ -662,7 +664,7 @@ let g:airline_theme='zenburn'
 " let g:airline_theme='base16'
 " let g:airline_theme='murrmur'
 let g:airline_inactive_collapse = 1
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline#extensions#tabline#fnamemod = ':~'
