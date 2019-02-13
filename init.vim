@@ -82,7 +82,8 @@ Plug 'Valloric/ListToggle'
 Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python install.py' }
 Plug 'SirVer/ultisnips'
 
-Plug 'Raimondi/delimitMate'
+" Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
 
 Plug 'w0rp/ale'
 
@@ -716,10 +717,10 @@ let g:undotree_WindowLayout=2
 " inoremap <C-\> @<Plug>delimitMateJumpMany
 " imap <silent> <buffer> <C-\> <Plug>delimitMateJumpMany
 
-imap <silent> <buffer> ¡ <Plug>delimitMateS-BS
-" imap <C-\> <S-BS>
-imap <silent> <buffer> £ <Plug>delimitMateJumpMany
-imap <silent> <buffer> ¢ <Plug>delimitMateJumpMany
+" imap <silent> <buffer> ¡ <Plug>delimitMateS-BS
+" " imap <C-\> <S-BS>
+" imap <silent> <buffer> £ <Plug>delimitMateJumpMany
+" imap <silent> <buffer> ¢ <Plug>delimitMateJumpMany
 
 " imap <silent> <buffer> <S-F2> <Plug>delimitMateS-BS
 " imap <silent> <buffer> <S-F1> <Plug>delimitMateS-BS
