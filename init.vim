@@ -231,6 +231,8 @@ vnoremap <C-V> v
 vnoremap < <gv
 vnoremap > >gv
 
+set wildoptions=pum
+set pumblend=10
 set shell=/bin/bash
 set noshowmode
 set scrolloff=1
@@ -394,10 +396,10 @@ set hidden
 set noreadonly
 
 " remove trailing whitespace from python files
-augroup whitespace
-    autocmd BufWritePre *.py,*.tex,*.js,*.md,*.html,*.css,*.vim :%s/\s\+$//e
-    autocmd BufWritePre *.hs,*.scss,*.rst,*.rb,*.R :%s/\s\+$//e
-augroup END
+" augroup whitespace
+"     autocmd BufWritePre *.py,*.tex,*.js,*.md,*.html,*.css,*.vim :%s/\s\+$//e
+"     autocmd BufWritePre *.hs,*.scss,*.rst,*.rb,*.R :%s/\s\+$//e
+" augroup END
 
 " " recall cursor position for file {{{
 " au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -504,6 +506,14 @@ let g:ale_linters = {
             \   'vim': ['vint'],
             \   'r': ['lintr']
             \}
+let g:ale_fixers = {
+            \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+            \   'python': ['black'],
+            \   'markdown': ['prettier'],
+            \}
+let g:ale_python_black_options = '-S -l 100 --py36'
+" let g:ale_python_black_options = '-l 100 -S -t cpy38'
+let g:ale_fix_on_save = 1
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
