@@ -30,10 +30,10 @@ Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'wilriker/vim-fish'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'tmhedberg/SimpylFold'
-" Plug 'lervag/vimtex'
+Plug 'lervag/vimtex'
 " Plug 'othree/vajs.vim'
 " }}}
-
+"
 " Colorschemes {{{
 " Plug 'jnurmine/Zenburn'
 " Plug 'morhetz/gruvbox'
@@ -49,7 +49,7 @@ Plug 'junegunn/vim-slash'
 
 " Peekaboo extends " and @ in normal mode and <CTRL-R> in insert mode so you
 " can see the contents of the registers.
-Plug 'junegunn/vim-peekaboo'
+" Plug 'junegunn/vim-peekaboo'
 
 Plug 'farmergreg/vim-lastplace'
 " Plug 'matze/vim-move'
@@ -81,6 +81,7 @@ Plug 'Valloric/ListToggle'
 
 Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python install.py' }
 Plug 'SirVer/ultisnips'
+" Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 
 " Plug 'Raimondi/delimitMate'
 Plug 'jiangmiao/auto-pairs'
@@ -364,12 +365,12 @@ endif
 " }}}
 
 " {{{ clipboard paste
-vnoremap <Leader>y "+y
-vnoremap <Leader>d "+d
-nnoremap <Leader>p "+p
-nnoremap <Leader>P "+P
-vnoremap <Leader>p "+p
-vnoremap <Leader>P "+P
+" vnoremap <Leader>y "+y
+" vnoremap <Leader>d "+d
+" nnoremap <Leader>p "+p
+" nnoremap <Leader>P "+P
+" vnoremap <Leader>p "+p
+" vnoremap <Leader>P "+P
 " }}}
 nnoremap Y y$
 
@@ -508,8 +509,9 @@ let g:ale_linters = {
             \}
 let g:ale_fixers = {
             \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-            \   'python': ['black'],
             \   'markdown': ['prettier'],
+            \   'html': ['prettier'],
+            \   'python': ['black'],
             \}
 let g:ale_python_black_options = '-S -l 100 --py36'
 " let g:ale_python_black_options = '-l 100 -S -t cpy38'
